@@ -1,57 +1,93 @@
-SavvEat Mobile App Design Specification
+Web Application Prompt Framework
+1. User Registration and Authentication
 
-1. Registration & Authentication
+    Implement secure user registration form with fields: email, password, display name, optional phone.
 
-Support third-party login: Google, Apple, and Other Email.
-User flow:
-Registration screen with options for Google, Apple, or email sign-up.
-Login screen for returning users.
-Error handling for failed logins, duplicate accounts, and network issues.
-Privacy notice and consent during registration.
-Secure authentication:
-Use OAuth for Google/Apple.
-Encrypt passwords and sensitive data.
-Store authentication tokens securely.
-2. User Profile & Preferences
+    Enable login/logout, password reset, and email verification features.
 
-Profile fields:
-Username
-Age
-Gender
-Weight
-Height
-Body fat percentage (optional)
-Preferences:
-Food preference (fish, meat, vegetables)
-Food allergies
-Notification settings
-App theme (light/dark)
-UI/UX:
-Simple, intuitive forms for input and editing.
-Validation for required fields.
-Editable profile screen.
-3. App Guide / Onboarding
+    Store user profile securely.
 
-Onboarding flow:
-Welcome screen: “Welcome to SavvEat!”
-Feature highlights: menu generation, nutritious value summary, groceries price comparison.
-Tutorials for first-time users.
-Interactive elements:
-Tooltips for key features.
-Step-by-step walkthroughs.
-Option to skip onboarding.
-Accessibility & localization:
-High contrast colors, adjustable font size, voiceover support.
-Multi-language support.
-4. General Requirements
+2. User Profile & Preference Input
 
-Platforms: iOS, Android, or cross-platform (e.g., React Native, Flutter).
-Design style: Minimal, playful, professional.
-Accessibility: Color contrast, font size, voiceover.
-Privacy: Data handling, user consent, GDPR compliance.
-5. Deliverables
+    After registration, prompt user to fill out a guided “User Preferences” wizard:
 
-Wireframes for registration, profile, preferences, onboarding, and main features.
-User flow diagrams for registration, profile setup, and onboarding.
-List of APIs/services for authentication (Google, Apple, email).
-Sample onboarding content (screens and text).
+        Personal info: Age, Gender, Height, Weight, BMI, activity level
+
+        Dietary preferences: Vegetarian, vegan, low-carb, low-salt, etc.
+
+        Food allergies/intolerances: List of common allergens (nuts, shellfish, gluten, etc.)
+
+        Taste preferences: spice level, favorite cuisines (checkbox list: Chinese, Japanese, Western, etc.)
+
+        Budget per meal/week
+
+    Save profile for ongoing personalization.
+
+3. Application Onboarding/Guidance
+
+    On first login, display a short step-by-step guidance tour:
+
+        Explain the app’s core value (personalized menu, cost optimization, health tracking)
+
+        Illustrate main dashboard features: menu generation, shopping list, nutrition & cost visualization
+
+        Show quick links to main actions (generate menu, update profile, track nutrition)
+
+    Include a contextual help button at all steps.
+
+4. AI-Powered Recipe Generation
+
+    Main dashboard function: “Generate My Menu”
+
+        Leverage user preferences and health data to recommend Chinese-style or user-selected recipes
+
+        Provide controls for meal type (breakfast/lunch/dinner/snack) and portion
+
+        Display list of suggested recipes with images, estimated prep time, serving size
+
+    Option to regenerate/refine suggestions
+
+5. Automated Budget Calculation
+
+    For each generated recipe, automatically list all required ingredients, matching local grocery prices via API/crawling.
+
+    Sum up the total estimated cost for meal/recipe/day/week.
+
+    Display breakdown in a visually clear cost panel.
+
+    Allow quick swapping of ingredients to see live cost changes.
+
+6. Nutrition Value Calculation & Progress Tracking
+
+    Analyze all recipes in the user’s daily menu:
+
+        Show calories, key macronutrients (protein/fat/carbs), micronutrients (iron, calcium, vitamin C etc.)
+
+        Use data visualization (bars, charts, progress rings) to display progress towards the user’s daily intake goals
+
+        Grade or highlight recipes that most closely meet user’s nutrition requirements
+
+    Option to view nutrition for each recipe, each day, and cumulative weekly intake.
+
+Sample User Flow
+
+    Register account → verify email/login
+
+    Complete preferences & health profile wizard
+
+    Receive guided tour of features
+
+    Hit “Generate Menu” → review personalized recipes
+
+    See per-meal and per-week grocery budget (with adjustable options)
+
+    View nutrition content for each dish and track overall daily intake progress
+
+Additional Guidance (Optional)
+
+    Build with modular, reusable components for profile, input forms, recipe cards, budget, and nutrition panels
+
+    Focus on seamless user experience: defaults, suggestions, inline validation, easy navigation
+
+    Ensure mobile-responsive design and accessibility compliance
+
