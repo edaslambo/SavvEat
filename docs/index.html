@@ -11,9 +11,17 @@
     <h1>SavvEat Mobile App Design Specification</h1>
     <p class="subtitle">Minimal, playful, and professional design for a cross-platform nutrition app</p>
   </header>
+  <nav class="tabs">
+    <button class="tablink active" onclick="showTab('registration')">Registration</button>
+    <button class="tablink" onclick="showTab('profile')">Profile</button>
+    <button class="tablink" onclick="showTab('onboarding')">Onboarding</button>
+    <button class="tablink" onclick="showTab('requirements')">Requirements</button>
+    <button class="tablink" onclick="showTab('deliverables')">Deliverables</button>
+    <button class="tablink" onclick="showTab('code')">Code</button>
+  </nav>
   <main>
-    <section>
-      <h2>1. Registration & Authentication</h2>
+    <section id="registration" class="tabcontent" style="display:block;">
+      <h2>Registration & Authentication</h2>
       <ul>
         <li>Support third-party login: Google, Apple, and Other Email.</li>
         <li>User flow:
@@ -33,8 +41,8 @@
         </li>
       </ul>
     </section>
-    <section>
-      <h2>2. User Profile & Preferences</h2>
+    <section id="profile" class="tabcontent">
+      <h2>User Profile & Preferences</h2>
       <ul>
         <li>Profile fields:
           <ul>
@@ -63,8 +71,8 @@
         </li>
       </ul>
     </section>
-    <section>
-      <h2>3. App Guide / Onboarding</h2>
+    <section id="onboarding" class="tabcontent">
+      <h2>App Guide / Onboarding</h2>
       <ul>
         <li>Onboarding flow:
           <ul>
@@ -88,8 +96,8 @@
         </li>
       </ul>
     </section>
-    <section>
-      <h2>4. General Requirements</h2>
+    <section id="requirements" class="tabcontent">
+      <h2>General Requirements</h2>
       <ul>
         <li>Platforms: iOS, Android, or cross-platform (e.g., React Native, Flutter).</li>
         <li>Design style: Minimal, playful, professional.</li>
@@ -97,8 +105,8 @@
         <li>Privacy: Data handling, user consent, GDPR compliance.</li>
       </ul>
     </section>
-    <section>
-      <h2>5. Deliverables</h2>
+    <section id="deliverables" class="tabcontent">
+      <h2>Deliverables</h2>
       <ul>
         <li>Wireframes for registration, profile, preferences, onboarding, and main features.</li>
         <li>User flow diagrams for registration, profile setup, and onboarding.</li>
@@ -106,7 +114,62 @@
         <li>Sample onboarding content (screens and text).</li>
       </ul>
     </section>
+    <section id="code" class="tabcontent">
+      <h2>Pseudo Functions</h2>
+      <pre class="code-block">
+// Registration
+function registerUser(method, credentials) {
+  if (method === 'Google' || method === 'Apple') {
+    return oauthSignIn(method);
+  } else {
+    return emailSignUp(credentials);
+  }
+}
+
+// Authentication
+function loginUser(method, credentials) {
+  // Validate credentials, handle errors
+  // Return authentication token
+}
+
+// Profile Editing
+function updateProfile(userId, profileData) {
+  // Validate required fields
+  // Save changes securely
+}
+
+// Onboarding
+function showOnboarding(userId) {
+  // Display welcome, features, tutorials
+  // Allow skip or walkthrough
+}
+
+// Preferences
+function setPreferences(userId, preferences) {
+  // Save user preferences (food, allergies, theme)
+}
+
+// Privacy & Consent
+function requestConsent(userId) {
+  // Show privacy notice, record consent
+}
+      </pre>
+    </section>
   </main>
+  <script>
+    function showTab(tabId) {
+      var tabs = document.querySelectorAll('.tabcontent');
+      tabs.forEach(function(tab) {
+        tab.style.display = 'none';
+      });
+      document.getElementById(tabId).style.display = 'block';
+      var links = document.querySelectorAll('.tablink');
+      links.forEach(function(link) {
+        link.classList.remove('active');
+      });
+      event.target.classList.add('active');
+    }
+  </script>
   <footer>
     <p>© 2025 SavvEat. For demo purposes only.</p>
   </footer>

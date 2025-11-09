@@ -16,6 +16,30 @@ header {
   font-weight: 400;
   margin-top: 0.5rem;
 }
+.tabs {
+  display: flex;
+  justify-content: center;
+  background: #eaf1fb;
+  border-bottom: 1px solid #dbeafe;
+  margin-bottom: 1rem;
+}
+.tablink {
+  background: none;
+  border: none;
+  outline: none;
+  padding: 1rem 2rem;
+  cursor: pointer;
+  font-size: 1rem;
+  color: #4f8cff;
+  transition: background 0.2s, color 0.2s;
+}
+.tablink.active, .tablink:hover {
+  background: #4f8cff;
+  color: #fff;
+}
+.tabcontent {
+  display: none;
+}
 main {
   max-width: 800px;
   margin: 2rem auto;
@@ -34,6 +58,16 @@ h2 {
 ul {
   margin: 0.5rem 0 0.5rem 1.5rem;
 }
+.code-block {
+  background: #f4f4f4;
+  border-radius: 8px;
+  padding: 1rem;
+  font-family: 'Fira Mono', 'Consolas', monospace;
+  font-size: 0.98rem;
+  color: #222;
+  overflow-x: auto;
+  margin-top: 1rem;
+}
 footer {
   text-align: center;
   padding: 1rem;
@@ -45,5 +79,9 @@ footer {
 @media (max-width: 600px) {
   main {
     padding: 1rem;
+  }
+  .tablink {
+    padding: 0.7rem 1rem;
+    font-size: 0.95rem;
   }
 }
