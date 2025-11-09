@@ -1,0 +1,57 @@
+SavvEat Mobile App Design Specification
+
+1. Registration & Authentication
+
+Support third-party login: Google, Apple, and Other Email.
+User flow:
+Registration screen with options for Google, Apple, or email sign-up.
+Login screen for returning users.
+Error handling for failed logins, duplicate accounts, and network issues.
+Privacy notice and consent during registration.
+Secure authentication:
+Use OAuth for Google/Apple.
+Encrypt passwords and sensitive data.
+Store authentication tokens securely.
+2. User Profile & Preferences
+
+Profile fields:
+Username
+Age
+Gender
+Weight
+Height
+Body fat percentage (optional)
+Preferences:
+Food preference (fish, meat, vegetables)
+Food allergies
+Notification settings
+App theme (light/dark)
+UI/UX:
+Simple, intuitive forms for input and editing.
+Validation for required fields.
+Editable profile screen.
+3. App Guide / Onboarding
+
+Onboarding flow:
+Welcome screen: “Welcome to SavvEat!”
+Feature highlights: menu generation, nutritious value summary, groceries price comparison.
+Tutorials for first-time users.
+Interactive elements:
+Tooltips for key features.
+Step-by-step walkthroughs.
+Option to skip onboarding.
+Accessibility & localization:
+High contrast colors, adjustable font size, voiceover support.
+Multi-language support.
+4. General Requirements
+
+Platforms: iOS, Android, or cross-platform (e.g., React Native, Flutter).
+Design style: Minimal, playful, professional.
+Accessibility: Color contrast, font size, voiceover.
+Privacy: Data handling, user consent, GDPR compliance.
+5. Deliverables
+
+Wireframes for registration, profile, preferences, onboarding, and main features.
+User flow diagrams for registration, profile setup, and onboarding.
+List of APIs/services for authentication (Google, Apple, email).
+Sample onboarding content (screens and text).
