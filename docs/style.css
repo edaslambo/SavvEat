@@ -46,7 +46,7 @@ nav.tabs {
   padding: 1rem 2rem;
   cursor: pointer;
   font-size: 1.05rem;
-  color: #43e97b;
+  color: #abebc0;
   font-weight: 600;
   letter-spacing: 0.03em;
   border-radius: 14px 14px 0 0;
@@ -78,7 +78,7 @@ section {
   margin-bottom: 2.5rem;
 }
 h2 {
-  color: #43e97b;
+  color: #5ddec0;
   margin-top: 0;
   font-size: 1.5rem;
   font-weight: 700;
