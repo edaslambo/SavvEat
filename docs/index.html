@@ -40,6 +40,23 @@
           </ul>
         </li>
       </ul>
+      <div class="demo-block">
+        <h3>Demo: Register or Login</h3>
+        <form id="authForm" onsubmit="return handleAuth(event)">
+          <label for="method">Sign up method:</label>
+          <select id="method" name="method">
+            <option value="Google">Google</option>
+            <option value="Apple">Apple</option>
+            <option value="Email">Email</option>
+          </select>
+          <div id="emailFields" style="margin-top:0.5rem;">
+            <input type="text" id="email" name="email" placeholder="Email" />
+            <input type="password" id="password" name="password" placeholder="Password" />
+          </div>
+          <button type="submit">Register / Login</button>
+        </form>
+        <div id="authResult" class="demo-result"></div>
+      </div>
     </section>
     <section id="profile" class="tabcontent">
       <h2>User Profile & Preferences</h2>
@@ -168,6 +185,42 @@ function requestConsent(userId) {
         link.classList.remove('active');
       });
       event.target.classList.add('active');
+    }
+
+    // Registration demo logic
+    document.getElementById('method').addEventListener('change', function() {
+      var emailFields = document.getElementById('emailFields');
+      if (this.value === 'Email') {
+        emailFields.style.display = 'block';
+      } else {
+        emailFields.style.display = 'none';
+      }
+    });
+
+    function handleAuth(event) {
+      event.preventDefault();
+      var method = document.getElementById('method').value;
+      var result = document.getElementById('authResult');
+      if (method === 'Email') {
+        var email = document.getElementById('email').value;
+        var password = document.getElementById('password').value;
+        if (!email || !password) {
+          result.textContent = 'Error: Email and password required.';
+          result.style.color = 'red';
+          return false;
+        }
+        if (email === 'test@example.com') {
+          result.textContent = 'Error: Duplicate account.';
+          result.style.color = 'red';
+          return false;
+        }
+        result.textContent = 'Success! Registered with email.';
+        result.style.color = 'green';
+      } else {
+        result.textContent = 'Success! Signed in with ' + method + '.';
+        result.style.color = 'green';
+      }
+      return false;
     }
   </script>
   <footer>
