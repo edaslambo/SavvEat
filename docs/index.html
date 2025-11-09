@@ -92,34 +92,42 @@
       </div>
     </section>
     <section id="dashboard" class="tabcontent">
-      <h2>Main Dashboard Functions</h2>
-      <div class="feature-card">
-        <span class="feature-icon">🍽️</span>
-        <div class="feature-content">
-          <h3>AI-Powered Recipe Generation</h3>
-          <p>Generate personalized menus based on your profile, preferences, and health data. Choose meal type, portion, and review suggested recipes with images and prep time.</p>
+      <h2 style="text-align:center; font-size:2rem; color:#6a4f1b; margin-bottom:1.2rem;">Daily Specials</h2>
+      <div class="specials-carousel">
+        <div class="special-card" id="card1">
+          <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=400&q=80" alt="Fried rice noodle with shrimp">
+          <div class="special-title">Fried rice noodle with shrimp</div>
+        </div>
+        <div class="special-card selected" id="card2">
+          <img src="https://images.unsplash.com/photo-1519864600265-abb23847ef2c?auto=format&fit=crop&w=400&q=80" alt="Grilled Steak with Asparagus">
+          <div class="special-title">Grilled Steak with Asparagus</div>
+        </div>
+        <div class="special-card" id="card3">
+          <img src="https://images.unsplash.com/photo-1464306076886-debede6b400b?auto=format&fit=crop&w=400&q=80" alt="Japanese Miso Soup with Tofu">
+          <div class="special-title">Japanese Miso Soup with Tofu</div>
+        </div>
+        <div class="special-card" id="card4">
+          <img src="https://images.unsplash.com/photo-1502741338009-cac2772e18bc?auto=format&fit=crop&w=400&q=80" alt="Rigatoni Pasta with Tomato Sauce">
+          <div class="special-title">Rigatoni Pasta with Tomato Sauce</div>
         </div>
       </div>
-      <div class="feature-card">
-        <span class="feature-icon">💸</span>
-        <div class="feature-content">
-          <h3>Automated Budget Calculation</h3>
-          <p>See ingredient lists with matched local grocery prices, total cost per meal/day/week, and swap ingredients to see live cost changes.</p>
-        </div>
+      <div class="special-tabs">
+        <button class="special-tab active">Ingredient</button>
+        <button class="special-tab">Compare Price</button>
+        <button class="special-tab">Instructions</button>
       </div>
-      <div class="feature-card">
-        <span class="feature-icon">📊</span>
-        <div class="feature-content">
-          <h3>Nutrition Value & Progress Tracking</h3>
-          <p>Analyze recipes for calories, macronutrients, and micronutrients. Visualize progress towards daily goals with charts and progress rings.</p>
+      <div class="cost-panel">
+        <div class="cost-title">Estimated Cost Breakdown</div>
+        <div class="cost-list">
+          <div class="cost-row"><span>Ribeye steak</span><span>$68</span></div>
+          <div class="cost-row"><span>Asparagus</span><span>$32</span></div>
+          <div class="cost-row"><span>Cherry tomatoes</span><span>$20</span></div>
+          <div class="cost-row"><span>Pink Peppercorns</span><span>$32</span></div>
+          <div class="cost-row"><span>Black Pepper</span><span>$16</span></div>
+          <div class="cost-row"><span>Garlic</span><span>$5</span></div>
+          <div class="cost-row"><span>Rosemary seasonings</span><span>$9</span></div>
         </div>
-      </div>
-      <div class="feature-card">
-        <span class="feature-icon">🛒</span>
-        <div class="feature-content">
-          <h3>Shopping List & Cost Panel</h3>
-          <p>Get a clear breakdown of grocery costs and a smart shopping list for your menu.</p>
-        </div>
+        <div class="cost-total"><span>Total</span><span>$182</span></div>
       </div>
     </section>
     <section id="code" class="tabcontent">
