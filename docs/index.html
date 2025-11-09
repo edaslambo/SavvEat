@@ -112,6 +112,14 @@
           </ul>
         </li>
       </ul>
+      <div class="demo-block" id="onboardingDemo">
+        <h3>Interactive Onboarding Walkthrough</h3>
+        <div id="onboardingStep" style="margin-bottom:1rem;"></div>
+        <div>
+          <button type="button" id="nextStepBtn" style="margin-right:0.5rem;">Next</button>
+          <button type="button" id="skipStepBtn">Skip</button>
+        </div>
+      </div>
     </section>
     <section id="requirements" class="tabcontent">
       <h2>General Requirements</h2>
@@ -186,6 +194,36 @@ function requestConsent(userId) {
       });
       event.target.classList.add('active');
     }
+
+    // Onboarding walkthrough demo
+    const onboardingSteps = [
+      { text: '👋 Welcome to SavvEat! Let’s get started with your healthy journey.', color: '#43e97b' },
+      { text: '🍽️ Feature: Menu generation tailored to your preferences.', color: '#38f9d7' },
+      { text: '📊 Feature: Nutritious value summary for every meal.', color: '#43e97b' },
+      { text: '🛒 Feature: Groceries price comparison to save money.', color: '#38f9d7' },
+      { text: '🎉 You’re ready! Explore the app and enjoy smart meal planning.', color: '#43e97b' }
+    ];
+    let onboardingIndex = 0;
+    function showOnboardingStep() {
+      const step = onboardingSteps[onboardingIndex];
+      const stepDiv = document.getElementById('onboardingStep');
+      stepDiv.textContent = step.text;
+      stepDiv.style.color = step.color;
+      stepDiv.style.fontWeight = '600';
+      stepDiv.style.fontSize = '1.15rem';
+    }
+    document.getElementById('nextStepBtn').onclick = function() {
+      onboardingIndex++;
+      if (onboardingIndex < onboardingSteps.length) {
+        showOnboardingStep();
+      } else {
+        document.getElementById('onboardingDemo').innerHTML = '<h3 style="color:#43e97b;">Onboarding Complete!</h3><p>Enjoy using SavvEat!</p>';
+      }
+    };
+    document.getElementById('skipStepBtn').onclick = function() {
+      document.getElementById('onboardingDemo').innerHTML = '<h3 style="color:#43e97b;">Onboarding Skipped</h3><p>You can revisit onboarding anytime.</p>';
+    };
+    showOnboardingStep();
 
     // Registration demo logic
     document.getElementById('method').addEventListener('change', function() {
