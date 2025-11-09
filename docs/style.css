@@ -217,30 +217,70 @@ footer {
   border-bottom-right-radius: 32px;
 }
 @media (max-width: 600px) {
+  html {
+    font-size: 15px;
+  }
   main {
-    padding: 1rem;
-    border-radius: 16px;
+    padding: 0.5rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(67,233,123,0.10);
   }
   .tablink {
-    padding: 0.8rem 1rem;
-    font-size: 1rem;
+    padding: 0.7rem 0.5rem;
+    font-size: 0.95rem;
+    min-width: 80px;
   }
   .tabs {
-    border-radius: 12px;
+    border-radius: 8px;
     max-width: 100vw;
+    margin: 1rem auto;
+    flex-wrap: wrap;
   }
   header {
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
-    padding: 2rem 0.5rem 1.2rem 0.5rem;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+    padding: 1.2rem 0.5rem 0.8rem 0.5rem;
+    font-size: 1.1rem;
+  }
+  h1 {
+    font-size: 1.3rem;
+  }
+  h2 {
+    font-size: 1.1rem;
   }
   .demo-block {
-    padding: 1.2rem;
-    border-radius: 14px;
+    padding: 0.7rem;
+    border-radius: 10px;
+  }
+  .demo-block label,
+  .demo-block input,
+  .demo-block select,
+  .demo-block button {
+    font-size: 1rem;
   }
   .feature-card {
     flex-direction: column;
-    padding: 1.2rem 0.7rem;
-    border-radius: 16px;
+    padding: 0.7rem 0.3rem;
+    border-radius: 10px;
+    gap: 0.7rem;
+  }
+  .feature-icon {
+    font-size: 2rem;
+    margin-right: 0;
+  }
+  .feature-content h3 {
+    font-size: 1rem;
+  }
+  .feature-content p {
+    font-size: 0.95rem;
+  }
+  ul {
+    margin-left: 1rem;
+  }
+  footer {
+    padding: 0.7rem;
+    font-size: 0.9rem;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
   }
 }
