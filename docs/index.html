@@ -9,216 +9,112 @@
 </head>
 <body>
   <header>
-    <h1>SavvEat</h1>
-    <p class="subtitle">Smart meal planning, cost optimization, and health tracking</p>
+    <h1>Smart Meal Planning Made Simple</h1>
+    <p class="subtitle">SavvEat helps you plan nutritious meals, save money, and eat healthier with personalized recommendations based on your preferences and dietary needs.</p>
   </header>
   <nav class="tabs">
-    <button class="tablink active" onclick="showTab('registration')">Registration</button>
-    <button class="tablink" onclick="showTab('profile')">Profile Wizard</button>
-    <button class="tablink" onclick="showTab('onboarding')">Onboarding</button>
-    <button class="tablink" onclick="showTab('dashboard')">Dashboard</button>
-    <button class="tablink" onclick="showTab('code')">Code</button>
+    <button class="tablink active">Features</button>
+    <button class="tablink">How It Works</button>
+    <button class="tablink">Testimonials</button>
+    <button class="tablink">Get Started</button>
   </nav>
   <main>
-    <section id="registration" class="tabcontent" style="display:block;">
-      <h2>User Registration & Authentication</h2>
-      <div class="demo-block">
-        <form id="regForm" onsubmit="return handleReg(event)">
-          <label>Email:</label>
-          <input type="email" id="regEmail" required placeholder="Email">
-          <label>Password:</label>
-          <input type="password" id="regPassword" required placeholder="Password">
-          <label>Display Name:</label>
-          <input type="text" id="regName" required placeholder="Display Name">
-          <label>Phone (optional):</label>
-          <input type="text" id="regPhone" placeholder="Phone">
-          <button type="submit">Register</button>
-        </form>
-        <div id="regResult" class="demo-result"></div>
+    <section id="features" class="tabcontent" style="display:block;">
+      <h2>Powerful Features</h2>
+      <div class="feature-card">
+        <span class="feature-icon"></span>
+        <div class="feature-content">
+          <h3>Personalized Menus</h3>
+          <p>Get meal plans tailored to your dietary preferences, allergies, and nutritional goals.</p>
+        </div>
       </div>
-    </section>
-    <section id="profile" class="tabcontent">
-      <h2>User Profile & Preferences Wizard</h2>
-      <div class="demo-block">
-        <form id="profileForm" onsubmit="return handleProfile(event)">
-          <label>Age:</label>
-          <input type="number" id="age" min="1" max="120" required>
-          <label>Gender:</label>
-          <select id="gender">
-            <option value="male">Male</option>
-            <option value="female">Female</option>
-            <option value="other">Other</option>
-          </select>
-          <label>Height (cm):</label>
-          <input type="number" id="height" min="50" max="250" required>
-          <label>Weight (kg):</label>
-          <input type="number" id="weight" min="20" max="300" required>
-          <label>BMI:</label>
-          <input type="number" id="bmi" min="10" max="60" required>
-          <label>Activity Level:</label>
-          <select id="activity">
-            <option value="low">Low</option>
-            <option value="medium">Medium</option>
-            <option value="high">High</option>
-          </select>
-          <label>Dietary Preferences:</label>
-          <select id="diet">
-            <option value="none">None</option>
-            <option value="vegetarian">Vegetarian</option>
-            <option value="vegan">Vegan</option>
-            <option value="low-carb">Low-Carb</option>
-            <option value="low-salt">Low-Salt</option>
-          </select>
-          <label>Food Allergies/Intolerances:</label>
-          <input type="text" id="allergies" placeholder="e.g. nuts, gluten">
-          <label>Taste Preferences:</label>
-          <input type="text" id="taste" placeholder="e.g. spicy, Chinese, Western">
-          <label>Budget per meal/week:</label>
-          <input type="number" id="budget" min="1" max="1000" required>
-          <button type="submit">Save Profile</button>
-        </form>
-        <div id="profileResult" class="demo-result"></div>
+      <div class="feature-card">
+        <span class="feature-icon"></span>
+        <div class="feature-content">
+          <h3>Price Comparison</h3>
+          <p>Compare grocery prices across stores to save money on your shopping.</p>
+        </div>
       </div>
-    </section>
-    <section id="onboarding" class="tabcontent">
-      <h2>Application Onboarding & Guidance</h2>
-      <div class="demo-block" id="onboardingDemo">
-        <h3>Step-by-Step Guidance Tour</h3>
-        <div id="onboardingStep" style="margin-bottom:1rem;"></div>
-        <div>
-          <button type="button" id="nextStepBtn" style="margin-right:0.5rem;">Next</button>
-          <button type="button" id="skipStepBtn">Skip</button>
+      <div class="feature-card">
+        <span class="feature-icon"></span>
+        <div class="feature-content">
+          <h3>Nutrition Insights</h3>
+          <p>Detailed nutritional breakdown of your meals to help you eat healthier.</p>
+        </div>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon"></span>
+        <div class="feature-content">
+          <h3>Mobile Friendly</h3>
+          <p>Access your meal plans anywhere, anytime with our mobile app.</p>
         </div>
       </div>
     </section>
-    <section id="dashboard" class="tabcontent">
-      <h2 style="text-align:center; font-size:2rem; color:#6a4f1b; margin-bottom:1.2rem;">Daily Specials</h2>
-      <div class="specials-carousel">
-        <div class="special-card" id="card1">
-          <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=400&q=80" alt="Fried rice noodle with shrimp">
-          <div class="special-title">Fried rice noodle with shrimp</div>
-        </div>
-        <div class="special-card selected" id="card2">
-          <img src="https://images.unsplash.com/photo-1519864600265-abb23847ef2c?auto=format&fit=crop&w=400&q=80" alt="Grilled Steak with Asparagus">
-          <div class="special-title">Grilled Steak with Asparagus</div>
-        </div>
-        <div class="special-card" id="card3">
-          <img src="https://images.unsplash.com/photo-1464306076886-debede6b400b?auto=format&fit=crop&w=400&q=80" alt="Japanese Miso Soup with Tofu">
-          <div class="special-title">Japanese Miso Soup with Tofu</div>
-        </div>
-        <div class="special-card" id="card4">
-          <img src="https://images.unsplash.com/photo-1502741338009-cac2772e18bc?auto=format&fit=crop&w=400&q=80" alt="Rigatoni Pasta with Tomato Sauce">
-          <div class="special-title">Rigatoni Pasta with Tomato Sauce</div>
+    <section id="how-it-works" class="tabcontent">
+      <h2>How SavvEat Works</h2>
+      <ol>
+        <li><strong>Create Your Profile:</strong> Tell us about your dietary preferences, allergies, and health goals.</li>
+        <li><strong>Get Personalized Plans:</strong> Receive customized meal plans based on your unique profile.</li>
+        <li><strong>Shop & Save:</strong> Compare prices and shop for ingredients with our integrated tools.</li>
+        <li><strong>Cook & Enjoy:</strong> Prepare delicious, nutritious meals and track your progress.</li>
+      </ol>
+    </section>
+    <section id="testimonials" class="tabcontent">
+      <h2>User Testimonials</h2>
+      <div class="feature-card">
+        <span class="feature-icon">    </span>
+        <div class="feature-content">
+          <p>"SavvEat helped me lose 15 pounds while still eating foods I love. The personalized meal plans are a game-changer!"</p>
+          <h3>Sarah Johnson</h3>
+          <p>Verified User</p>
         </div>
       </div>
-      <div class="special-tabs">
-        <button class="special-tab active">Ingredient</button>
-        <button class="special-tab">Compare Price</button>
-        <button class="special-tab">Instructions</button>
+    </section>
+    <section id="download" class="tabcontent">
+      <h2>Ready to Transform Your Eating Habits?</h2>
+      <p>Join thousands of users who have already started their journey to healthier eating with SavvEat.</p>
+      <div>
+        <button class="special-tab"> Download on the App Store</button>
+        <button class="special-tab"> GET IT ON Google Play</button>
       </div>
-      <div class="cost-panel">
-        <div class="cost-title">Estimated Cost Breakdown</div>
-        <div class="cost-list">
-          <div class="cost-row"><span>Ribeye steak</span><span>$68</span></div>
-          <div class="cost-row"><span>Asparagus</span><span>$32</span></div>
-          <div class="cost-row"><span>Cherry tomatoes</span><span>$20</span></div>
-          <div class="cost-row"><span>Pink Peppercorns</span><span>$32</span></div>
-          <div class="cost-row"><span>Black Pepper</span><span>$16</span></div>
-          <div class="cost-row"><span>Garlic</span><span>$5</span></div>
-          <div class="cost-row"><span>Rosemary seasonings</span><span>$9</span></div>
-        </div>
-        <div class="cost-total"><span>Total</span><span>$182</span></div>
+      <p>Or continue with</p>
+      <div>
+        <button class="special-tab"> Google</button>
+        <button class="special-tab"> Apple</button>
+        <button class="special-tab"> Email</button>
       </div>
     </section>
   </main>
-  <script>
-    function showTab(tabId) {
-      var tabs = document.querySelectorAll('.tabcontent');
-      tabs.forEach(function(tab) {
-        tab.style.display = 'none';
-      });
-      document.getElementById(tabId).style.display = 'block';
-      var links = document.querySelectorAll('.tablink');
-      links.forEach(function(link) {
-        link.classList.remove('active');
-      });
-      event.target.classList.add('active');
-    }
-
-    // Registration demo logic
-    function handleReg(event) {
-      event.preventDefault();
-      var email = document.getElementById('regEmail').value;
-      var password = document.getElementById('regPassword').value;
-      var name = document.getElementById('regName').value;
-      var phone = document.getElementById('regPhone').value;
-      var result = document.getElementById('regResult');
-      if (!email || !password || !name) {
-        result.textContent = 'Error: All required fields must be filled.';
-        result.style.color = 'red';
-        return false;
-      }
-      result.textContent = 'Success! Registered as ' + name + '.';
-      result.style.color = '#43e97b';
-      return false;
-    }
-
-    // Profile wizard demo logic
-    function handleProfile(event) {
-      event.preventDefault();
-      var age = document.getElementById('age').value;
-      var gender = document.getElementById('gender').value;
-      var height = document.getElementById('height').value;
-      var weight = document.getElementById('weight').value;
-      var bmi = document.getElementById('bmi').value;
-      var activity = document.getElementById('activity').value;
-      var diet = document.getElementById('diet').value;
-      var allergies = document.getElementById('allergies').value;
-      var taste = document.getElementById('taste').value;
-      var budget = document.getElementById('budget').value;
-      var result = document.getElementById('profileResult');
-      if (!age || !height || !weight || !bmi || !budget) {
-        result.textContent = 'Error: Please fill all required fields.';
-        result.style.color = 'red';
-        return false;
-      }
-      result.textContent = 'Profile saved! Preferences updated.';
-      result.style.color = '#43e97b';
-      return false;
-    }
-
-    // Onboarding walkthrough demo
-    const onboardingSteps = [
-      { text: 'Welcome to SavvEat! Personalized menu, cost optimization, health tracking.', color: '#43e97b' },
-      { text: 'Main dashboard: menu generation, shopping list, nutrition & cost visualization.', color: '#38f9d7' },
-      { text: 'Quick links: generate menu, update profile, track nutrition.', color: '#43e97b' },
-      { text: 'Help is available at every step!', color: '#38f9d7' },
-      { text: 'You’re ready! Enjoy smart meal planning.', color: '#43e97b' }
-    ];
-    let onboardingIndex = 0;
-    function showOnboardingStep() {
-      const step = onboardingSteps[onboardingIndex];
-      const stepDiv = document.getElementById('onboardingStep');
-      stepDiv.textContent = step.text;
-      stepDiv.style.color = step.color;
-      stepDiv.style.fontWeight = '600';
-      stepDiv.style.fontSize = '1.15rem';
-    }
-    document.getElementById('nextStepBtn').onclick = function() {
-      onboardingIndex++;
-      if (onboardingIndex < onboardingSteps.length) {
-        showOnboardingStep();
-      } else {
-        document.getElementById('onboardingDemo').innerHTML = '<h3 style="color:#43e97b;">Onboarding Complete!</h3><p>Enjoy using SavvEat!</p>';
-      }
-    };
-    document.getElementById('skipStepBtn').onclick = function() {
-      document.getElementById('onboardingDemo').innerHTML = '<h3 style="color:#43e97b;">Onboarding Skipped</h3><p>You can revisit onboarding anytime.</p>';
-    };
-    showOnboardingStep();
-  </script>
   <footer>
-    <p>© 2025 SavvEat. For demo purposes only.</p>
+    <div class="footer-links">
+      <div>
+        <h4>Product</h4>
+        <ul>
+          <li>Features</li>
+          <li>How It Works</li>
+          <li>Pricing</li>
+          <li>Download</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li>About Us</li>
+          <li>Careers</li>
+          <li>Contact</li>
+          <li>Blog</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Legal</h4>
+        <ul>
+          <li>Privacy Policy</li>
+          <li>Terms of Service</li>
+          <li>GDPR Compliance</li>
+        </ul>
+      </div>
+    </div>
+    <p>© 2023 SavvEat. All rights reserved.</p>
   </footer>
 </body>
 </html>

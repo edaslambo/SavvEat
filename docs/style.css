@@ -1,3 +1,10 @@
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: linear-gradient(135deg, #eaf1fb 0%, #dbeafe 60%, #b6f5c9 100%);
+  color: #222;
+  margin: 0;
+  padding: 0;
+}
 /* Directly copied and adapted from https://ricky100-hub.github.io/SavvEat/ for full visual fidelity */
 body {
   font-family: 'Segoe UI', Arial, sans-serif;
@@ -5,6 +12,38 @@ body {
   color: #222;
   margin: 0;
   padding: 0;
+}
+header {
+  background: linear-gradient(90deg, #43e97b 60%, #38f9d7 100%);
+  color: #fff;
+  padding: 3rem 1rem 2rem 1rem;
+  text-align: center;
+  border-bottom-left-radius: 40px;
+  border-bottom-right-radius: 40px;
+  box-shadow: 0 6px 32px rgba(67,233,123,0.15);
+}
+/* Additional CSS rules from the provided source */
+/* ... (rest of the CSS rules) ... */
+footer {
+  text-align: center;
+  padding: 1.5rem;
+  background: linear-gradient(90deg, #eaf1fb 60%, #b6f5c9 100%);
+  color: #555;
+  font-size: 1.05rem;
+  border-top: 1px solid #b6f5c9;
+  border-bottom-left-radius: 32px;
+  border-bottom-right-radius: 32px;
+}
+@media (max-width: 600px) {
+  html {
+    font-size: 15px;
+  }
+  main {
+    padding: 0.5rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(67,233,123,0.10);
+  }
+  /* ... (rest of the media queries) ... */
 }
 header {
   background: linear-gradient(90deg, #43e97b 60%, #38f9d7 100%);
