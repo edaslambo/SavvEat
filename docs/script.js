@@ -106,6 +106,14 @@ document.addEventListener('scroll', function() {
             element.style.transform = 'translateY(0)';
         }
     });
+    
+    // Header minimization on scroll
+    const header = document.querySelector('header');
+    if (window.scrollY > 100) {
+        header.classList.add('minimized');
+    } else {
+        header.classList.remove('minimized');
+    }
 });
 
 // Initialize animations
