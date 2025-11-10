@@ -180,4 +180,40 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Initialize
     showStep(1);
-})
+});
+
+// GenMenu button functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const genMenuBtn = document.getElementById('GenMenu');
+    if (genMenuBtn) {
+        genMenuBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+
+            // Show loading overlay
+            showLoadingOverlay();
+
+            // Navigate to plans page after 3 seconds
+            setTimeout(function() {
+                window.location.href = 'plans.html';
+            }, 3000);
+        });
+    }
+});
+
+function showLoadingOverlay() {
+    // Create loading overlay
+    const overlay = document.createElement('div');
+    overlay.id = 'loadingOverlay';
+    overlay.innerHTML = `
+        <div class="loading-content">
+            <div class="loading-spinner"></div>
+            <p>Generating Recipes</p>
+        </div>
+    `;
+    document.body.appendChild(overlay);
+
+    // Show overlay
+    setTimeout(() => {
+        overlay.classList.add('show');
+    }, 10);
+}

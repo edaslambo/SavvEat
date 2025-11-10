@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personalized Plans - SavvEat</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <h2>Savv<span>Eat</span></h2>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#how-it-works">How It Works</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#download">Download</a></li>
+                </ul>
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Personalized Plans Section -->
+    <section class="personalized-plans">
+        <div class="container">
+            <div class="plans-header">
+                <h1>Your Personalized Meal Plan</h1>
+                <p>Based on your preferences, we've created a customized recipe just for you</p>
+            </div>
+
+            <div class="recipe-card">
+                <div class="recipe-header">
+                    <h2>肉鬆蒜蓉茄子（4人份量）</h2>
+                    <div class="recipe-image">
+                        <img src="https://images.contentstack.io/v3/assets/blta9d684affff23c8c/blte61f7f587be46e3d/6492706648a8ff07b0477cf6/home-cooked-meals-recipes-11.webp?h=70%25&w=100%25&rev=d04a2e69e27e47408c43411e1db951a3" alt="肉鬆蒜蓉茄子">
+                    </div>
+                </div>
+
+                <div class="nutrition-section">
+                    <div class="section-tabs">
+                        <button class="tab-btn active" onclick="showSection('nutrition')">Nutrition</button>
+                        <button class="tab-btn" onclick="showSection('procedure')">Procedure</button>
+                    </div>
+
+                    <div id="nutrition-content" class="tab-content active">
+                        <h3>Nutrition Information</h3>
+                        <div class="nutrition-grid">
+                            <div class="nutrition-item">
+                                <div class="nutrition-label">
+                                    <span class="nutrient-name">蛋白質</span>
+                                    <span class="nutrient-value">20克/66克</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 30%"></div>
+                                </div>
+                            </div>
+
+                            <div class="nutrition-item">
+                                <div class="nutrition-label">
+                                    <span class="nutrient-name">膳食纖維</span>
+                                    <span class="nutrient-value">5克/35克</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 14%"></div>
+                                </div>
+                            </div>
+
+                            <div class="nutrition-item">
+                                <div class="nutrition-label">
+                                    <span class="nutrient-name">維生素A</span>
+                                    <span class="nutrient-value">300微克/900微克</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 33%"></div>
+                                </div>
+                            </div>
+
+                            <div class="nutrition-item">
+                                <div class="nutrition-label">
+                                    <span class="nutrient-name">維生素B1</span>
+                                    <span class="nutrient-value">0毫克</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 0%"></div>
+                                </div>
+                            </div>
+
+                            <div class="nutrition-item">
+                                <div class="nutrition-label">
+                                    <span class="nutrient-name">維生素B2</span>
+                                    <span class="nutrient-value">-</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 0%"></div>
+                                </div>
+                            </div>
+
+                            <div class="nutrition-item">
+                                <div class="nutrition-label">
+                                    <span class="nutrient-name">維生素C</span>
+                                    <span class="nutrient-value">20毫克/90毫克</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 22%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="procedure-content" class="tab-content">
+                        <h3>Recipe Procedure</h3>
+
+                        <div class="recipe-procedure">
+                            <div class="ingredients-section">
+                                <h4>材料：</h4>
+                                <ul class="ingredients-list">
+                                    <li>瘦豬肉碎 4両 (約150克)</li>
+                                    <li>茄子 1條 (約240克)</li>
+                                    <li>蒜頭切末 幾粒</li>
+                                    <li>植物油 1½湯匙</li>
+                                </ul>
+
+                                <h4>肉醃料：</h4>
+                                <ul class="ingredients-list">
+                                    <li>生抽 2茶匙</li>
+                                    <li>白胡椒粉 少許</li>
+                                    <li>糖 ½茶匙</li>
+                                    <li>生粉 ½茶匙</li>
+                                    <li>清水 1湯匙</li>
+                                </ul>
+
+                                <h4>調味汁：</h4>
+                                <ul class="ingredients-list">
+                                    <li>鹽 ½茶匙</li>
+                                    <li>生抽 1茶匙</li>
+                                    <li>麻油 ½茶匙</li>
+                                    <li>白胡椒粉 少許</li>
+                                    <li>糖 ½茶匙</li>
+                                    <li>清水 3湯匙</li>
+                                </ul>
+                            </div>
+
+                            <div class="steps-section">
+                                <h4>做法：</h4>
+                                <ol class="cooking-steps">
+                                    <li>碎肉和醃料拌勻，醃片刻</li>
+                                    <li>茄子去蒂後洗淨，切成菱角形狀</li>
+                                    <li>於易潔鑊下½湯匙油，加入碎肉炒至8成熟，盛起備用</li>
+                                    <li>用1湯匙油炒茄子，爆香蒜茸</li>
+                                    <li>加入適量水分將茄子煮至軟身</li>
+                                    <li>然後加入碎肉、調味汁煮至滾及碎肉全熟即成</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="recipe-actions">
+                    <a href="preferences.html" class="btn-secondary">Back to Preferences</a>
+                    <a href="cart.html" class="btn-primary">Add to Shopping Cart</a>
+                    <a href="index.html" class="btn-primary">Get More Recipes</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+    <script>
+        function showSection(sectionName) {
+            // Hide all tab contents
+            const tabContents = document.querySelectorAll('.tab-content');
+            tabContents.forEach(content => content.classList.remove('active'));
+
+            // Remove active class from all tab buttons
+            const tabButtons = document.querySelectorAll('.tab-btn');
+            tabButtons.forEach(button => button.classList.remove('active'));
+
+            // Show selected tab content
+            document.getElementById(sectionName + '-content').classList.add('active');
+
+            // Add active class to clicked button
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>

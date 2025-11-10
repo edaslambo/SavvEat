@@ -277,7 +277,16 @@
                     <i class="fas fa-check-circle"></i>
                     <h3>Profile Saved Successfully!</h3>
                     <p>Your preferences have been saved and will be used to personalize your meal recommendations.</p>
-                    <a href="index.html" class="btn-primary">Return to Home</a>
+                    <button class="btn-primary" id="GenMenu">Get Personalized Plans</button>
+                </div>
+            </div>
+
+            <!-- Loading Overlay -->
+            <div id="loadingOverlay" class="loading-overlay">
+                <div class="loading-content">
+                    <div class="loading-spinner"></div>
+                    <div class="loading-text">Generating Recipes</div>
+                    <div class="loading-subtext">Please wait while we create your personalized meal plan...</div>
                 </div>
             </div>
         </div>
