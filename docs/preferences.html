@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Preferences - SavvEat</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <h2>Savv<span>Eat</span></h2>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#how-it-works">How It Works</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#download">Download</a></li>
+                </ul>
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Preferences Wizard -->
+    <section class="preferences-wizard">
+        <div class="container">
+            <div class="wizard-header">
+                <h1>Set Up Your Profile</h1>
+                <p>Help us personalize your meal recommendations by telling us about yourself</p>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                    <div class="step-indicators">
+                        <span class="step active" data-step="1">1</span>
+                        <span class="step" data-step="2">2</span>
+                        <span class="step" data-step="3">3</span>
+                        <span class="step" data-step="4">4</span>
+                        <span class="step" data-step="5">5</span>
+                    </div>
+                </div>
+            </div>
+
+            <form id="preferencesForm" class="wizard-form">
+                <!-- Step 1: Personal Info -->
+                <div class="wizard-step active" data-step="1">
+                    <h2>Personal Information</h2>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="age">Age</label>
+                            <input type="number" id="age" name="age" min="13" max="120" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="gender">Gender</label>
+                            <select id="gender" name="gender" required>
+                                <option value="">Select Gender</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                                <option value="other">Other</option>
+                                <option value="prefer-not-to-say">Prefer not to say</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="height">Height (cm)</label>
+                            <input type="number" id="height" name="height" min="100" max="250" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="weight">Weight (kg)</label>
+                            <input type="number" id="weight" name="weight" min="30" max="300" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label>Activity Level</label>
+                        <div class="radio-group">
+                            <label class="radio-option">
+                                <input type="radio" name="activityLevel" value="low" required>
+                                <span class="radio-label">Low (Office work, mostly sedentary)</span>
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="activityLevel" value="medium" required>
+                                <span class="radio-label">Medium (Sales, service work, some movement)</span>
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="activityLevel" value="high" required>
+                                <span class="radio-label">High (Blue collar work, physically demanding)</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label>Exercise Habits</label>
+                        <div class="radio-group">
+                            <label class="radio-option">
+                                <input type="radio" name="exerciseHabits" value="0-1" required>
+                                <span class="radio-label">0-1 times per week</span>
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="exerciseHabits" value="1-3" required>
+                                <span class="radio-label">1-3 times per week</span>
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="exerciseHabits" value="3-6" required>
+                                <span class="radio-label">3-6 times per week</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 2: Dietary Preferences -->
+                <div class="wizard-step" data-step="2">
+                    <h2>Dietary Preferences</h2>
+                    <p>Select all that apply to your dietary preferences</p>
+                    <div class="checkbox-grid">
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="dietaryPreferences" value="vegetarian">
+                            <span class="checkbox-label">Vegetarian</span>
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="dietaryPreferences" value="vegan">
+                            <span class="checkbox-label">Vegan</span>
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="dietaryPreferences" value="low-carb">
+                            <span class="checkbox-label">Low-Carb</span>
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="dietaryPreferences" value="low-salt">
+                            <span class="checkbox-label">Low-Salt</span>
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="dietaryPreferences" value="meat-lover">
+                            <span class="checkbox-label">Meat Lover</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Step 3: Food Allergies -->
+                <div class="wizard-step" data-step="3">
+                    <h2>Food Allergies & Intolerances</h2>
+                    <p>Select all allergens you need to avoid</p>
+                    <div class="checkbox-grid">
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="allergies" value="nuts">
+                            <span class="checkbox-label">Nuts</span>
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="allergies" value="shellfish">
+                            <span class="checkbox-label">Shellfish</span>
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="allergies" value="gluten">
+                            <span class="checkbox-label">Gluten</span>
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="allergies" value="dairy">
+                            <span class="checkbox-label">Dairy</span>
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="allergies" value="eggs">
+                            <span class="checkbox-label">Eggs</span>
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="allergies" value="soy">
+                            <span class="checkbox-label">Soy</span>
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="allergies" value="fish">
+                            <span class="checkbox-label">Fish</span>
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="allergies" value="sesame">
+                            <span class="checkbox-label">Sesame</span>
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="allergies" value="peanuts">
+                            <span class="checkbox-label">Peanuts</span>
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="allergies" value="wheat">
+                            <span class="checkbox-label">Wheat</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Step 4: Taste Preferences -->
+                <div class="wizard-step" data-step="4">
+                    <h2>Taste Preferences</h2>
+
+                    <div class="form-group full-width">
+                        <label for="spiceLevel">Spice Level</label>
+                        <select id="spiceLevel" name="spiceLevel" required>
+                            <option value="">Select your preferred spice level</option>
+                            <option value="none">No spice</option>
+                            <option value="mild">Mild</option>
+                            <option value="medium">Medium</option>
+                            <option value="hot">Hot</option>
+                            <option value="very-hot">Very Hot</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label>Favorite Cuisines</label>
+                        <p>Select all cuisines you enjoy</p>
+                        <div class="checkbox-grid">
+                            <label class="checkbox-option">
+                                <input type="checkbox" name="favoriteCuisines" value="chinese">
+                                <span class="checkbox-label">Chinese</span>
+                            </label>
+                            <label class="checkbox-option">
+                                <input type="checkbox" name="favoriteCuisines" value="japanese">
+                                <span class="checkbox-label">Japanese</span>
+                            </label>
+                            <label class="checkbox-option">
+                                <input type="checkbox" name="favoriteCuisines" value="western">
+                                <span class="checkbox-label">Western</span>
+                            </label>
+                            <label class="checkbox-option">
+                                <input type="checkbox" name="favoriteCuisines" value="italian">
+                                <span class="checkbox-label">Italian</span>
+                            </label>
+                            <label class="checkbox-option">
+                                <input type="checkbox" name="favoriteCuisines" value="thai">
+                                <span class="checkbox-label">Thai</span>
+                            </label>
+                            <label class="checkbox-option">
+                                <input type="checkbox" name="favoriteCuisines" value="indian">
+                                <span class="checkbox-label">Indian</span>
+                            </label>
+                            <label class="checkbox-option">
+                                <input type="checkbox" name="favoriteCuisines" value="korean">
+                                <span class="checkbox-label">Korean</span>
+                            </label>
+                            <label class="checkbox-option">
+                                <input type="checkbox" name="favoriteCuisines" value="mediterranean">
+                                <span class="checkbox-label">Mediterranean</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 5: Budget -->
+                <div class="wizard-step" data-step="5">
+                    <h2>Budget Preferences</h2>
+                    <div class="form-group">
+                        <label for="budgetPerMeal">Budget per meal ($)</label>
+                        <input type="number" id="budgetPerMeal" name="budgetPerMeal" min="1" max="50" step="0.50" required>
+                        <small>Enter your preferred budget per meal</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="budgetPerWeek">Weekly budget ($)</label>
+                        <input type="number" id="budgetPerWeek" name="budgetPerWeek" min="10" max="500" step="5" required>
+                        <small>Enter your total weekly food budget</small>
+                    </div>
+                </div>
+
+                <!-- Navigation Buttons -->
+                <div class="wizard-navigation">
+                    <button type="button" id="prevBtn" class="btn-secondary" disabled>Previous</button>
+                    <button type="button" id="nextBtn" class="btn-primary">Next</button>
+                    <button type="submit" id="submitBtn" class="btn-primary" style="display: none;">Save Profile</button>
+                </div>
+            </form>
+
+            <!-- Success Message -->
+            <div id="successMessage" class="success-message" style="display: none;">
+                <div class="success-content">
+                    <i class="fas fa-check-circle"></i>
+                    <h3>Profile Saved Successfully!</h3>
+                    <p>Your preferences have been saved and will be used to personalize your meal recommendations.</p>
+                    <a href="index.html" class="btn-primary">Return to Home</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+    <script src="preferences.js"></script>
+</body>
+</html></content>
+<parameter name="filePath">/home/edaslambo/projects/hackathon/docs/preferences.html

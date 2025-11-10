@@ -487,6 +487,245 @@ footer {
     font-size: 0.9rem;
 }
 
+/* Preferences Wizard Styles */
+.preferences-wizard {
+    padding: 6rem 0 4rem;
+    background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+    min-height: 100vh;
+}
+
+.wizard-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.wizard-header h1 {
+    font-size: 2.5rem;
+    color: #222;
+    margin-bottom: 1rem;
+}
+
+.wizard-header p {
+    font-size: 1.2rem;
+    color: #666;
+    max-width: 600px;
+    margin: 0 auto 2rem;
+}
+
+.progress-bar {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto 2rem;
+    height: 8px;
+    background: #e0e0e0;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #4CAF50 0%, #2E7D32 100%);
+    width: 0%;
+    transition: width 0.3s ease;
+}
+
+.step-indicators {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+}
+
+.step {
+    width: 40px;
+    height: 40px;
+    background: #e0e0e0;
+    color: #666;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.step.active {
+    background: #4CAF50;
+    color: white;
+}
+
+.wizard-form {
+    background: white;
+    border-radius: 15px;
+    padding: 3rem;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.wizard-step {
+    display: none;
+}
+
+.wizard-step.active {
+    display: block;
+}
+
+.wizard-step h2 {
+    font-size: 1.8rem;
+    color: #222;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.wizard-step p {
+    text-align: center;
+    color: #666;
+    margin-bottom: 2rem;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group.full-width {
+    grid-column: 1 / -1;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #333;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #4CAF50;
+}
+
+.form-group input.error,
+.form-group select.error {
+    border-color: #f44336;
+}
+
+.form-group small {
+    display: block;
+    margin-top: 0.5rem;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.radio-group,
+.checkbox-grid {
+    display: grid;
+    gap: 1rem;
+}
+
+.radio-option,
+.checkbox-option {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.radio-option:hover,
+.checkbox-option:hover {
+    background: #f8f9fa;
+    padding: 0.5rem;
+    border-radius: 8px;
+    margin: -0.5rem;
+}
+
+.radio-option.error,
+.checkbox-option.error {
+    background: #ffebee;
+}
+
+.radio-option input[type="radio"],
+.checkbox-option input[type="checkbox"] {
+    margin-right: 12px;
+    width: 18px;
+    height: 18px;
+}
+
+.radio-label,
+.checkbox-label {
+    font-weight: 500;
+    color: #333;
+}
+
+.checkbox-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.wizard-navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid #e0e0e0;
+}
+
+.wizard-navigation button {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 50px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.wizard-navigation button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.success-message {
+    text-align: center;
+    padding: 3rem;
+}
+
+.success-content i {
+    font-size: 4rem;
+    color: #4CAF50;
+    margin-bottom: 1.5rem;
+}
+
+.success-content h3 {
+    font-size: 2rem;
+    color: #222;
+    margin-bottom: 1rem;
+}
+
+.success-content p {
+    color: #666;
+    margin-bottom: 2rem;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 /* Responsive Design */
 @media (max-width: 992px) {
     h1 {
