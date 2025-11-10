@@ -1,119 +1,254 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SavvEat</title>
-  <link rel="stylesheet" href="style.css">
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SavvEat - Smart Meal Planning</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-  <header>
-    <h1>Smart Meal Planning Made Simple</h1>
-    <p class="subtitle">SavvEat helps you plan nutritious meals, save money, and eat healthier with personalized recommendations based on your preferences and dietary needs.</p>
-  </header>
-  <nav class="tabs">
-    <button class="tablink active">Features</button>
-    <button class="tablink">How It Works</button>
-    <button class="tablink">Testimonials</button>
-    <button class="tablink">Get Started</button>
-  </nav>
-  <main>
-    <section id="features" class="tabcontent" style="display:block;">
-      <h2>Powerful Features</h2>
-      <div class="feature-card">
-        <span class="feature-icon"></span>
-        <div class="feature-content">
-          <h3>Personalized Menus</h3>
-          <p>Get meal plans tailored to your dietary preferences, allergies, and nutritional goals.</p>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <h2>Savv<span>Eat</span></h2>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#how-it-works">How It Works</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#download" class="btn-primary">Get Started</a></li>
+                </ul>
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+            
+            <div class="hero">
+                <div class="hero-content">
+                    <h1>Smart Meal Planning Made Simple</h1>
+                    <p>SavvEat helps you plan nutritious meals, save money, and eat healthier with personalized recommendations based on your preferences and dietary needs.</p>
+                    <div class="cta-buttons">
+                        <a href="#download" class="btn-primary">Download Now</a>
+                        <a href="#how-it-works" class="btn-secondary">Learn More</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="https://images.unsplash.com/photo-1490818387583-1baba5e638af?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=732&amp;q=80" alt="Healthy food bowl">
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="feature-card">
-        <span class="feature-icon"></span>
-        <div class="feature-content">
-          <h3>Price Comparison</h3>
-          <p>Compare grocery prices across stores to save money on your shopping.</p>
+    </header>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <div class="section-header">
+                <h2>Powerful Features</h2>
+                <p>Everything you need for smart meal planning</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card" style="opacity: 1; transform: translateY(0px); transition: opacity 0.5s, transform 0.5s;">
+                    <div class="icon">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <h3>Personalized Menus</h3>
+                    <p>Get meal plans tailored to your dietary preferences, allergies, and nutritional goals.</p>
+                </div>
+                <div class="feature-card" style="opacity: 1; transform: translateY(0px); transition: opacity 0.5s, transform 0.5s;">
+                    <div class="icon">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <h3>Price Comparison</h3>
+                    <p>Compare grocery prices across stores to save money on your shopping.</p>
+                </div>
+                <div class="feature-card" style="opacity: 1; transform: translateY(0px); transition: opacity 0.5s, transform 0.5s;">
+                    <div class="icon">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+                    <h3>Nutrition Insights</h3>
+                    <p>Detailed nutritional breakdown of your meals to help you eat healthier.</p>
+                </div>
+                <div class="feature-card" style="opacity: 1; transform: translateY(0px); transition: opacity 0.5s, transform 0.5s;">
+                    <div class="icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Mobile Friendly</h3>
+                    <p>Access your meal plans anywhere, anytime with our mobile app.</p>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="feature-card">
-        <span class="feature-icon"></span>
-        <div class="feature-content">
-          <h3>Nutrition Insights</h3>
-          <p>Detailed nutritional breakdown of your meals to help you eat healthier.</p>
-        </div>
-      </div>
-      <div class="feature-card">
-        <span class="feature-icon"></span>
-        <div class="feature-content">
-          <h3>Mobile Friendly</h3>
-          <p>Access your meal plans anywhere, anytime with our mobile app.</p>
-        </div>
-      </div>
     </section>
-    <section id="how-it-works" class="tabcontent">
-      <h2>How SavvEat Works</h2>
-      <ol>
-        <li><strong>Create Your Profile:</strong> Tell us about your dietary preferences, allergies, and health goals.</li>
-        <li><strong>Get Personalized Plans:</strong> Receive customized meal plans based on your unique profile.</li>
-        <li><strong>Shop & Save:</strong> Compare prices and shop for ingredients with our integrated tools.</li>
-        <li><strong>Cook & Enjoy:</strong> Prepare delicious, nutritious meals and track your progress.</li>
-      </ol>
-    </section>
-    <section id="testimonials" class="tabcontent">
-      <h2>User Testimonials</h2>
-      <div class="feature-card">
-        <span class="feature-icon">    </span>
-        <div class="feature-content">
-          <p>"SavvEat helped me lose 15 pounds while still eating foods I love. The personalized meal plans are a game-changer!"</p>
-          <h3>Sarah Johnson</h3>
-          <p>Verified User</p>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <h2>How SavvEat Works</h2>
+                <p>Planning your meals has never been easier</p>
+            </div>
+            <div class="steps">
+                <div class="step" style="opacity: 1; transform: translateY(0px); transition: opacity 0.5s, transform 0.5s;">
+                    <div class="step-number">1</div>
+                    <h3>Create Your Profile</h3>
+                    <p>Tell us about your dietary preferences, allergies, and health goals.</p>
+                </div>
+                <div class="step" style="opacity: 1; transform: translateY(0px); transition: opacity 0.5s, transform 0.5s;">
+                    <div class="step-number">2</div>
+                    <h3>Get Personalized Plans</h3>
+                    <p>Receive customized meal plans based on your unique profile.</p>
+                </div>
+                <div class="step" style="opacity: 1; transform: translateY(0px); transition: opacity 0.5s, transform 0.5s;">
+                    <div class="step-number">3</div>
+                    <h3>Shop &amp; Save</h3>
+                    <p>Compare prices and shop for ingredients with our integrated tools.</p>
+                </div>
+                <div class="step" style="opacity: 1; transform: translateY(0px); transition: opacity 0.5s, transform 0.5s;">
+                    <div class="step-number">4</div>
+                    <h3>Cook &amp; Enjoy</h3>
+                    <p>Prepare delicious, nutritious meals and track your progress.</p>
+                </div>
+            </div>
         </div>
-      </div>
     </section>
-    <section id="download" class="tabcontent">
-      <h2>Ready to Transform Your Eating Habits?</h2>
-      <p>Join thousands of users who have already started their journey to healthier eating with SavvEat.</p>
-      <div>
-        <button class="special-tab"> Download on the App Store</button>
-        <button class="special-tab"> GET IT ON Google Play</button>
-      </div>
-      <p>Or continue with</p>
-      <div>
-        <button class="special-tab"> Google</button>
-        <button class="special-tab"> Apple</button>
-        <button class="special-tab"> Email</button>
-      </div>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2>User Testimonials</h2>
+                <p>See what our users are saying</p>
+            </div>
+            <div class="testimonial-grid">
+                <div class="testimonial-card" style="opacity: 1; transform: translateY(0px); transition: opacity 0.5s, transform 0.5s; display: block;">
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"SavvEat helped me lose 15 pounds while still eating foods I love. The personalized meal plans are a game-changer!"</p>
+                    <div class="user">
+                        <div class="user-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="user-info">
+                            <h4>Sarah Johnson</h4>
+                            <p>Verified User</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card" style="display: none; opacity: 1; transform: translateY(0px); transition: opacity 0.5s, transform 0.5s;">
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <p>"The grocery price comparison feature saves me at least $100 per month. Highly recommend to anyone looking to eat healthy on a budget."</p>
+                    <div class="user">
+                        <div class="user-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="user-info">
+                            <h4>Michael Chen</h4>
+                            <p>Verified User</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
-  </main>
-  <footer>
-    <div class="footer-links">
-      <div>
-        <h4>Product</h4>
-        <ul>
-          <li>Features</li>
-          <li>How It Works</li>
-          <li>Pricing</li>
-          <li>Download</li>
-        </ul>
-      </div>
-      <div>
-        <h4>Company</h4>
-        <ul>
-          <li>About Us</li>
-          <li>Careers</li>
-          <li>Contact</li>
-          <li>Blog</li>
-        </ul>
-      </div>
-      <div>
-        <h4>Legal</h4>
-        <ul>
-          <li>Privacy Policy</li>
-          <li>Terms of Service</li>
-          <li>GDPR Compliance</li>
-        </ul>
-      </div>
-    </div>
-    <p>© 2023 SavvEat. All rights reserved.</p>
-  </footer>
-</body>
-</html>
+
+    <!-- Download Section -->
+    <section id="download" class="download">
+        <div class="container">
+            <div class="download-content">
+                <h2>Ready to Transform Your Eating Habits?</h2>
+                <p>Join thousands of users who have already started their journey to healthier eating with SavvEat.</p>
+                <div class="app-buttons">
+                    <a href="#" class="app-btn">
+                        <i class="fab fa-apple"></i>
+                        <div>
+                            <span>Download on the</span>
+                            <span>App Store</span>
+                        </div>
+                    </a>
+                    <a href="#" class="app-btn">
+                        <i class="fab fa-google-play"></i>
+                        <div>
+                            <span>GET IT ON</span>
+                            <span>Google Play</span>
+                        </div>
+                    </a>
+                </div>
+                <div class="login-options">
+                    <p>Or continue with</p>
+                    <div class="social-login">
+                        <a href="#" class="social-btn google">
+                            <i class="fab fa-google"></i>
+                            <span>Google</span>
+                        </a>
+                        <a href="#" class="social-btn apple">
+                            <i class="fab fa-apple"></i>
+                            <span>Apple</span>
+                        </a>
+                        <a href="#" class="social-btn email">
+                            <i class="fas fa-envelope"></i>
+                            <span>Email</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>Savv<span>Eat</span></h2>
+                    <p>Smart meal planning for a healthier you.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="link-column">
+                        <h4>Product</h4>
+                        <ul>
+                            <li><a href="#">Features</a></li>
+                            <li><a href="#">How It Works</a></li>
+                            <li><a href="#">Pricing</a></li>
+                            <li><a href="#">Download</a></li>
+                        </ul>
+                    </div>
+                    <div class="link-column">
+                        <h4>Company</h4>
+                        <ul>
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="#">Careers</a></li>
+                            <li><a href="#">Contact</a></li>
+                            <li><a href="#">Blog</a></li>
+                        </ul>
+                    </div>
+                    <div class="link-column">
+                        <h4>Legal</h4>
+                        <ul>
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Terms of Service</a></li>
+                            <li><a href="#">GDPR Compliance</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2023 SavvEat. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+
+</body></html>
