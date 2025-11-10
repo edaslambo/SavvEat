@@ -114,6 +114,17 @@ document.addEventListener('scroll', function() {
     } else {
         header.classList.remove('minimized');
     }
+    
+    // Hero fade on scroll
+    const hero = document.querySelector('.hero');
+    const heroHeight = hero.offsetHeight;
+    const scrollPosition = window.scrollY;
+    
+    if (scrollPosition > heroHeight * 0.5) {
+        hero.classList.add('faded');
+    } else {
+        hero.classList.remove('faded');
+    }
 });
 
 // Initialize animations

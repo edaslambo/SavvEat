@@ -147,6 +147,11 @@ header.minimized .logo h2 {
     align-items: center;
     padding: 4rem 0;
     gap: 2rem;
+    transition: opacity 0.5s ease;
+}
+
+.hero.faded {
+    opacity: 0;
 }
 
 .hero-content {
