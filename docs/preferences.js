@@ -180,5 +180,4 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Initialize
     showStep(1);
-});</content>
-<parameter name="filePath">/home/edaslambo/projects/hackathon/docs/preferences.js
+})
