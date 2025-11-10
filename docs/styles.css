@@ -88,11 +88,6 @@ header {
     top: 0;
     z-index: 100;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    transition: padding 0.3s ease;
-}
-
-header.minimized {
-    padding: 0.5rem 0;
 }
 
 .navbar {
@@ -104,11 +99,6 @@ header.minimized {
 .logo h2 {
     font-size: 1.8rem;
     font-weight: 700;
-    transition: font-size 0.3s ease;
-}
-
-header.minimized .logo h2 {
-    font-size: 1.4rem;
 }
 
 .logo span {
@@ -147,11 +137,10 @@ header.minimized .logo h2 {
     align-items: center;
     padding: 4rem 0;
     gap: 2rem;
-    transition: opacity 0.5s ease;
 }
 
-.hero.faded {
-    opacity: 0;
+.hero.hidden {
+    display: none;
 }
 
 .hero-content {

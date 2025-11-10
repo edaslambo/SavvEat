@@ -115,15 +115,12 @@ document.addEventListener('scroll', function() {
         header.classList.remove('minimized');
     }
     
-    // Hero fade on scroll
+    // Hero hide on scroll
     const hero = document.querySelector('.hero');
-    const heroHeight = hero.offsetHeight;
-    const scrollPosition = window.scrollY;
-    
-    if (scrollPosition > heroHeight * 0.5) {
-        hero.classList.add('faded');
+    if (window.scrollY > 30) {
+        hero.classList.add('hidden');
     } else {
-        hero.classList.remove('faded');
+        hero.classList.remove('hidden');
     }
 });
 
