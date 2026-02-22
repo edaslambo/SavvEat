@@ -1,6 +1,8 @@
 // Preferences Wizard JavaScript
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('preferencesForm');
+    if (!form) return; // Exit if not on the preferences page
+
     const steps = document.querySelectorAll('.wizard-step');
     const stepIndicators = document.querySelectorAll('.step');
     const progressFill = document.getElementById('progressFill');
@@ -155,7 +157,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // Show success message
             form.style.display = 'none';
-            successMessage.style.display = 'block';
+            const wizardHeader = document.querySelector('.wizard-header');
+            if (wizardHeader) {
+                wizardHeader.style.display = 'none';
+            }
+            
+            // Ensure successMessage exists before trying to show it
+            const successMsg = document.getElementById('successMessage');
+            if (successMsg) {
+                successMsg.style.display = 'block';
+            }
 
             // Scroll to top
             window.scrollTo({ top: 0, behavior: 'smooth' });

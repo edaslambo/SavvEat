@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Preferences - SavvEat</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <h2>Savv<span>Eat</span></h2>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#how-it-works">How It Works</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#download">Download</a></li>
+                </ul>
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Role Selection -->
+    <section class="role-selection">
+        <div class="container role-container">
+            <!-- Top Tabs -->
+            <!-- <div class="role-tabs">
+                <div class="role-tab active">Role selection</div>
+            </div> -->
+
+            <div class="role-header">
+                <h1>Role Selection</h1>
+                <p>Choose how you use SavvEat at home</p>
+            </div>
+
+            <div class="role-content-box">
+                <div class="role-cards">
+                    <!-- Helper Card -->
+                    <label class="role-card helper-card">
+                        <input type="radio" name="userRole" value="helper" class="role-radio" checked>
+                        <div class="card-content">
+                            <div class="card-header">
+                                <h2>Helper</h2>
+                                <div class="icon-circle">
+                                    <i class="fas fa-user-nurse"></i>
+                                </div>
+                            </div>
+                            <p>Plan what to eat and when to eat it. Choose local dishes, set the schedule, and share clear shopping lists with your helper so everyone's on the same page.</p>
+                        </div>
+                    </label>
+
+                    <!-- Employer Card -->
+                    <label class="role-card employer-card">
+                        <input type="radio" name="userRole" value="employer" class="role-radio">
+                        <div class="card-content">
+                            <div class="card-header">
+                                <h2>Employer</h2>
+                                <div class="icon-circle">
+                                    <i class="fas fa-calendar-alt"></i>
+                                </div>
+                            </div>
+                            <p>See today's plan at a glance. Get simple recipes and clear wet-market shopping lists, so you can cook local dishes confidently and independently.</p>
+                        </div>
+                    </label>
+                </div>
+
+                <div class="role-actions">
+                    <button type="button" id="nextStepBtn" class="btn-primary next-step-btn">Next Step</button>
+                    <a href="#" class="sign-in-link">Sign in with existing account</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+    <script src="preferences.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const nextStepBtn = document.getElementById('nextStepBtn');
+            if (nextStepBtn) {
+                nextStepBtn.addEventListener('click', function() {
+                    const selectedRole = document.querySelector('input[name="userRole"]:checked').value;
+                    if (selectedRole === 'employer') {
+                        window.location.href = 'preferences.html';
+                    } else if (selectedRole === 'helper') {
+                        window.location.href = 'plans.html';
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html></content>

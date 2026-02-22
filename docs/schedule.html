@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SavvEat</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <h2>Savv<span>Eat</span></h2>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#how-it-works">How It Works</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#download">Download</a></li>
+                </ul>
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Scheduled Meal Section -->
+    <section class="scheduled-meal">
+        <div class="container">
+            <div class="plans-header" style="display: flex; justify-content: space-between; align-items: center;">
+                <h1>Weekly Meal Schedule</h1>
+                <button id="editScheduleBtn" class="btn-secondary" style="margin: 0; padding: 8px 20px; font-size: 0.9rem;">
+                    <i class="fas fa-edit"></i> Edit
+                </button>
+            </div>
+
+            <!-- Date Selector -->
+            <div class="date-selector-container">
+                <div class="date-selector" id="dateSelector">
+                    <!-- Dates will be injected here by JS -->
+                </div>
+            </div>
+
+            <!-- Meal Display Area -->
+            <div class="schedule-display-container" id="scheduleDisplay">
+                <!-- Meals will be injected here by JS -->
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const dateSelector = document.getElementById('dateSelector');
+            const scheduleDisplay = document.getElementById('scheduleDisplay');
+            const editScheduleBtn = document.getElementById('editScheduleBtn');
+            let currentDate = '';
+            
+            // Load saved schedule data
+            const savedData = localStorage.getItem('savvEatSchedule');
+            const scheduleData = savedData ? JSON.parse(savedData) : {};
+
+            // Mock data for meals (needed to get names/images from IDs)
+            const meals = {
+                breakfast: [
+                    { id: 'b1', name: 'Oatmeal with Berries', image: 'https://images.unsplash.com/photo-1517673132405-a56a62b18caf?w=300&h=200&fit=crop' },
+                    { id: 'b2', name: 'Avocado Toast', image: 'https://images.unsplash.com/photo-1603048297172-c92544798d5e?w=300&h=200&fit=crop' },
+                    { id: 'b3', name: 'Pancakes', image: 'https://images.unsplash.com/photo-1528207776546-365bb710ee93?w=300&h=200&fit=crop' }
+                ],
+                lunch: [
+                    { id: 'l1', name: 'Grilled Chicken Salad', image: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=300&h=200&fit=crop' },
+                    { id: 'l2', name: 'Quinoa Bowl', image: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=300&h=200&fit=crop' },
+                    { id: 'l3', name: 'Turkey Wrap', image: 'https://images.unsplash.com/photo-1626804475297-41601ea0ba49?w=300&h=200&fit=crop' }
+                ],
+                dinner: [
+                    { id: 'd1', name: 'Fried rice noodle with shrimp', image: 'https://images.unsplash.com/photo-1552611052-33e04de081de?w=300&h=200&fit=crop' },
+                    { id: 'd2', name: 'Grilled Steak (with Asparagus)', image: 'https://images.unsplash.com/photo-1600891964092-4316c288032e?w=300&h=200&fit=crop' },
+                    { id: 'd3', name: 'Japanese Miso Soup with Tofu', image: 'https://images.unsplash.com/photo-1547592166-23ac45744acd?w=300&h=200&fit=crop' },
+                    { id: 'd4', name: 'Rigatoni Pasta with Tomato Sauce', image: 'https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?w=300&h=200&fit=crop' }
+                ]
+            };
+
+            function getMealDetails(category, id) {
+                if (!id) return null;
+                return meals[category].find(m => m.id === id) || null;
+            }
+
+            function renderSchedule() {
+                // Always fetch fresh data from localStorage to handle back-button navigation
+                const savedData = localStorage.getItem('savvEatSchedule');
+                const currentScheduleData = savedData ? JSON.parse(savedData) : {};
+                
+                scheduleDisplay.innerHTML = '';
+                const dayData = currentScheduleData[currentDate] || {};
+                
+                const categories = [
+                    { key: 'breakfast', label: 'Breakfast', colorClass: 'pill-teal' },
+                    { key: 'lunch', label: 'Lunch', colorClass: 'pill-orange' },
+                    { key: 'dinner', label: 'Dinner', colorClass: 'pill-brown' }
+                ];
+
+                categories.forEach(cat => {
+                    const mealId = dayData[cat.key];
+                    const mealDetails = getMealDetails(cat.key, mealId);
+                    
+                    const pillContainer = document.createElement('div');
+                    pillContainer.className = `schedule-pill ${cat.colorClass}`;
+                    
+                    const labelDiv = document.createElement('div');
+                    labelDiv.className = 'pill-label';
+                    labelDiv.textContent = cat.label;
+                    
+                    const contentDiv = document.createElement('div');
+                    contentDiv.className = 'pill-content';
+                    
+                    if (mealDetails) {
+                        contentDiv.textContent = mealDetails.name;
+                    } else {
+                        contentDiv.textContent = '- No meal planned -';
+                        contentDiv.classList.add('empty-meal');
+                    }
+                    
+                    pillContainer.appendChild(labelDiv);
+                    pillContainer.appendChild(contentDiv);
+                    scheduleDisplay.appendChild(pillContainer);
+                });
+            }
+
+            // Generate dates for the next 7 days
+            const today = new Date();
+            const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+            
+            // Check for date in URL parameters
+            const urlParams = new URLSearchParams(window.location.search);
+            const urlDate = urlParams.get('date');
+            
+            for (let i = 0; i < 7; i++) {
+                const date = new Date(today);
+                date.setDate(today.getDate() + i);
+                
+                const dayName = days[date.getDay()];
+                const dayNum = String(date.getDate()).padStart(2, '0');
+                const monthNum = String(date.getMonth() + 1).padStart(2, '0');
+                const dateString = `${dayNum}/${monthNum} (${dayName})`;
+                const dateKey = `${date.getFullYear()}-${monthNum}-${dayNum}`;
+
+                const dateBtn = document.createElement('button');
+                
+                // Determine if this button should be active
+                let isActive = false;
+                if (urlDate) {
+                    isActive = (dateKey === urlDate);
+                } else {
+                    isActive = (i === 0);
+                }
+                
+                dateBtn.className = 'date-btn' + (isActive ? ' active' : '');
+                dateBtn.textContent = dateString;
+                dateBtn.dataset.date = dateKey;
+                
+                if (isActive) currentDate = dateKey;
+
+                dateBtn.addEventListener('click', function() {
+                    document.querySelectorAll('.date-btn').forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    currentDate = this.dataset.date;
+                    renderSchedule();
+                });
+
+                dateSelector.appendChild(dateBtn);
+            }
+            
+            // If urlDate was provided but not found in the next 7 days, default to today
+            if (!currentDate) {
+                const firstBtn = dateSelector.querySelector('.date-btn');
+                if (firstBtn) {
+                    firstBtn.classList.add('active');
+                    currentDate = firstBtn.dataset.date;
+                }
+            }
+            
+            // Initial render
+            renderSchedule();
+            
+            // Edit button logic
+            editScheduleBtn.addEventListener('click', function() {
+                window.location.href = `plans.html?date=${currentDate}`;
+            });
+        });
+    </script>
+</body>
+</html>

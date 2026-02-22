@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Personalized Plans - SavvEat</title>
+    <title>SavvEat</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -36,163 +36,235 @@
     <section class="personalized-plans">
         <div class="container">
             <div class="plans-header">
-                <h1>Your Personalized Meal Plan</h1>
-                <p>Based on your preferences, we've created a customized recipe just for you</p>
+                <h1>Weekly Meal Schedule</h1>
             </div>
 
-            <div class="recipe-card">
-                <div class="recipe-header">
-                    <h2>肉鬆蒜蓉茄子（4人份量）</h2>
-                    <div class="recipe-image">
-                        <img src="https://images.contentstack.io/v3/assets/blta9d684affff23c8c/blte61f7f587be46e3d/6492706648a8ff07b0477cf6/home-cooked-meals-recipes-11.webp?h=70%25&w=100%25&rev=d04a2e69e27e47408c43411e1db951a3" alt="肉鬆蒜蓉茄子">
-                    </div>
+            <!-- Date Selector -->
+            <div class="date-selector-container">
+                <div class="date-selector" id="dateSelector">
+                    <!-- Dates will be injected here by JS -->
                 </div>
+            </div>
 
-                <div class="nutrition-section">
-                    <div class="section-tabs">
-                        <button class="tab-btn active" onclick="showSection('nutrition')">Nutrition</button>
-                        <button class="tab-btn" onclick="showSection('procedure')">Procedure</button>
-                    </div>
-
-                    <div id="nutrition-content" class="tab-content active">
-                        <h3>Nutrition Information</h3>
-                        <div class="nutrition-grid">
-                            <div class="nutrition-item">
-                                <div class="nutrition-label">
-                                    <span class="nutrient-name">蛋白質</span>
-                                    <span class="nutrient-value">20克/66克</span>
-                                </div>
-                                <div class="progress-bar">
-                                    <div class="progress-fill" style="width: 30%"></div>
-                                </div>
-                            </div>
-
-                            <div class="nutrition-item">
-                                <div class="nutrition-label">
-                                    <span class="nutrient-name">膳食纖維</span>
-                                    <span class="nutrient-value">5克/35克</span>
-                                </div>
-                                <div class="progress-bar">
-                                    <div class="progress-fill" style="width: 14%"></div>
-                                </div>
-                            </div>
-
-                            <div class="nutrition-item">
-                                <div class="nutrition-label">
-                                    <span class="nutrient-name">維生素A</span>
-                                    <span class="nutrient-value">300微克/900微克</span>
-                                </div>
-                                <div class="progress-bar">
-                                    <div class="progress-fill" style="width: 33%"></div>
-                                </div>
-                            </div>
-
-                            <div class="nutrition-item">
-                                <div class="nutrition-label">
-                                    <span class="nutrient-name">維生素B1</span>
-                                    <span class="nutrient-value">0毫克</span>
-                                </div>
-                                <div class="progress-bar">
-                                    <div class="progress-fill" style="width: 0%"></div>
-                                </div>
-                            </div>
-
-                            <div class="nutrition-item">
-                                <div class="nutrition-label">
-                                    <span class="nutrient-name">維生素B2</span>
-                                    <span class="nutrient-value">-</span>
-                                </div>
-                                <div class="progress-bar">
-                                    <div class="progress-fill" style="width: 0%"></div>
-                                </div>
-                            </div>
-
-                            <div class="nutrition-item">
-                                <div class="nutrition-label">
-                                    <span class="nutrient-name">維生素C</span>
-                                    <span class="nutrient-value">20毫克/90毫克</span>
-                                </div>
-                                <div class="progress-bar">
-                                    <div class="progress-fill" style="width: 22%"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div id="procedure-content" class="tab-content">
-                        <h3>Recipe Procedure</h3>
-
-                        <div class="recipe-procedure">
-                            <div class="ingredients-section">
-                                <h4>材料：</h4>
-                                <ul class="ingredients-list">
-                                    <li>瘦豬肉碎 4両 (約150克)</li>
-                                    <li>茄子 1條 (約240克)</li>
-                                    <li>蒜頭切末 幾粒</li>
-                                    <li>植物油 1½湯匙</li>
-                                </ul>
-
-                                <h4>肉醃料：</h4>
-                                <ul class="ingredients-list">
-                                    <li>生抽 2茶匙</li>
-                                    <li>白胡椒粉 少許</li>
-                                    <li>糖 ½茶匙</li>
-                                    <li>生粉 ½茶匙</li>
-                                    <li>清水 1湯匙</li>
-                                </ul>
-
-                                <h4>調味汁：</h4>
-                                <ul class="ingredients-list">
-                                    <li>鹽 ½茶匙</li>
-                                    <li>生抽 1茶匙</li>
-                                    <li>麻油 ½茶匙</li>
-                                    <li>白胡椒粉 少許</li>
-                                    <li>糖 ½茶匙</li>
-                                    <li>清水 3湯匙</li>
-                                </ul>
-                            </div>
-
-                            <div class="steps-section">
-                                <h4>做法：</h4>
-                                <ol class="cooking-steps">
-                                    <li>碎肉和醃料拌勻，醃片刻</li>
-                                    <li>茄子去蒂後洗淨，切成菱角形狀</li>
-                                    <li>於易潔鑊下½湯匙油，加入碎肉炒至8成熟，盛起備用</li>
-                                    <li>用1湯匙油炒茄子，爆香蒜茸</li>
-                                    <li>加入適量水分將茄子煮至軟身</li>
-                                    <li>然後加入碎肉、調味汁煮至滾及碎肉全熟即成</li>
-                                </ol>
-                            </div>
+            <div class="meal-schedule-content">
+                <!-- Breakfast -->
+                <div class="meal-category">
+                    <h2>Breakfast</h2>
+                    <div class="meal-options-container">
+                        <div class="meal-options" id="breakfastOptions">
+                            <!-- Options injected by JS -->
                         </div>
                     </div>
                 </div>
 
-                <div class="recipe-actions">
-                    <a href="preferences.html" class="btn-secondary">Back to Preferences</a>
-                    <a href="cart.html" class="btn-primary">Add to Shopping Cart</a>
-                    <a href="index.html" class="btn-primary">Get More Recipes</a>
+                <!-- Lunch -->
+                <div class="meal-category">
+                    <h2>Lunch</h2>
+                    <div class="meal-options-container">
+                        <div class="meal-options" id="lunchOptions">
+                            <!-- Options injected by JS -->
+                        </div>
+                    </div>
                 </div>
+
+                <!-- Dinner -->
+                <div class="meal-category">
+                    <h2>Dinner</h2>
+                    <div class="meal-options-container">
+                        <div class="meal-options" id="dinnerOptions">
+                            <!-- Options injected by JS -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="schedule-actions">
+                <button type="button" id="btnApply" class="btn-secondary">Save for Today</button>
+                <a href="schedule.html" id="btnProceed" class="btn-primary">View Full Schedule</a>
             </div>
         </div>
     </section>
 
     <script src="script.js"></script>
     <script>
-        function showSection(sectionName) {
-            // Hide all tab contents
-            const tabContents = document.querySelectorAll('.tab-content');
-            tabContents.forEach(content => content.classList.remove('active'));
+        document.addEventListener('DOMContentLoaded', function() {
+            const dateSelector = document.getElementById('dateSelector');
+            const breakfastOptions = document.getElementById('breakfastOptions');
+            const lunchOptions = document.getElementById('lunchOptions');
+            const dinnerOptions = document.getElementById('dinnerOptions');
+            const btnApply = document.getElementById('btnApply');
 
-            // Remove active class from all tab buttons
-            const tabButtons = document.querySelectorAll('.tab-btn');
-            tabButtons.forEach(button => button.classList.remove('active'));
+            let currentDate = '';
+            let scheduleData = JSON.parse(localStorage.getItem('savvEatSchedule')) || {};
 
-            // Show selected tab content
-            document.getElementById(sectionName + '-content').classList.add('active');
+            // Generate dates for the next 7 days
+            const today = new Date();
+            const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+            
+            // Check for date in URL parameters
+            const urlParams = new URLSearchParams(window.location.search);
+            const urlDate = urlParams.get('date');
+            
+            for (let i = 0; i < 7; i++) {
+                const date = new Date(today);
+                date.setDate(today.getDate() + i);
+                
+                const dayName = days[date.getDay()];
+                const dayNum = String(date.getDate()).padStart(2, '0');
+                const monthNum = String(date.getMonth() + 1).padStart(2, '0');
+                const dateString = `${dayNum}/${monthNum} (${dayName})`;
+                const dateKey = `${date.getFullYear()}-${monthNum}-${dayNum}`;
 
-            // Add active class to clicked button
-            event.target.classList.add('active');
-        }
+                const dateBtn = document.createElement('button');
+                
+                // Determine if this button should be active
+                let isActive = false;
+                if (urlDate) {
+                    isActive = (dateKey === urlDate);
+                } else {
+                    isActive = (i === 0);
+                }
+                
+                dateBtn.className = 'date-btn' + (isActive ? ' active' : '');
+                dateBtn.textContent = dateString;
+                dateBtn.dataset.date = dateKey;
+                
+                if (isActive) currentDate = dateKey;
+
+                dateBtn.addEventListener('click', function() {
+                    document.querySelectorAll('.date-btn').forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    currentDate = this.dataset.date;
+                    document.getElementById('btnProceed').href = `schedule.html?date=${currentDate}`;
+                    renderMeals();
+                });
+
+                dateSelector.appendChild(dateBtn);
+            }
+            
+            // If urlDate was provided but not found in the next 7 days, default to today
+            if (!currentDate) {
+                const firstBtn = dateSelector.querySelector('.date-btn');
+                if (firstBtn) {
+                    firstBtn.classList.add('active');
+                    currentDate = firstBtn.dataset.date;
+                }
+            }
+            
+            // Set initial href for the proceed button
+            document.getElementById('btnProceed').href = `schedule.html?date=${currentDate}`;
+
+            // Mock data for meals
+            const meals = {
+                breakfast: [
+                    { id: 'b1', name: 'Oatmeal with Berries', image: 'https://images.unsplash.com/photo-1517673132405-a56a62b18caf?w=300&h=200&fit=crop' },
+                    { id: 'b2', name: 'Avocado Toast', image: 'https://images.unsplash.com/photo-1603048297172-c92544798d5e?w=300&h=200&fit=crop' },
+                    { id: 'b3', name: 'Pancakes', image: 'https://images.unsplash.com/photo-1528207776546-365bb710ee93?w=300&h=200&fit=crop' }
+                ],
+                lunch: [
+                    { id: 'l1', name: 'Grilled Chicken Salad', image: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=300&h=200&fit=crop' },
+                    { id: 'l2', name: 'Quinoa Bowl', image: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=300&h=200&fit=crop' },
+                    { id: 'l3', name: 'Turkey Wrap', image: 'https://images.unsplash.com/photo-1626804475297-41601ea0ba49?w=300&h=200&fit=crop' }
+                ],
+                dinner: [
+                    { id: 'd1', name: 'Fried rice noodle with shrimp', image: 'https://images.unsplash.com/photo-1552611052-33e04de081de?w=300&h=200&fit=crop' },
+                    { id: 'd2', name: 'Grilled Steak (with Asparagus)', image: 'https://images.unsplash.com/photo-1600891964092-4316c288032e?w=300&h=200&fit=crop' },
+                    { id: 'd3', name: 'Japanese Miso Soup with Tofu', image: 'https://images.unsplash.com/photo-1547592166-23ac45744acd?w=300&h=200&fit=crop' },
+                    { id: 'd4', name: 'Rigatoni Pasta with Tomato Sauce', image: 'https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?w=300&h=200&fit=crop' }
+                ]
+            };
+
+            function renderMealOptions(category, container, options) {
+                container.innerHTML = '';
+                const savedSelection = scheduleData[currentDate]?.[category] || '';
+
+                options.forEach(option => {
+                    const label = document.createElement('label');
+                    label.className = 'meal-card';
+                    
+                    const input = document.createElement('input');
+                    input.type = 'radio';
+                    input.name = `meal_${category}`;
+                    input.value = option.id;
+                    input.className = 'meal-radio';
+                    if (savedSelection === option.id) input.checked = true;
+
+                    const cardContent = document.createElement('div');
+                    cardContent.className = 'meal-card-content';
+
+                    const img = document.createElement('img');
+                    img.src = option.image;
+                    img.alt = option.name;
+
+                    const nameDiv = document.createElement('div');
+                    nameDiv.className = 'meal-name';
+                    nameDiv.textContent = option.name;
+
+                    cardContent.appendChild(img);
+                    cardContent.appendChild(nameDiv);
+                    label.appendChild(input);
+                    label.appendChild(cardContent);
+                    container.appendChild(label);
+                });
+            }
+
+            function renderMeals() {
+                // Always fetch fresh data from localStorage to handle back-button navigation
+                scheduleData = JSON.parse(localStorage.getItem('savvEatSchedule')) || {};
+                renderMealOptions('breakfast', breakfastOptions, meals.breakfast);
+                renderMealOptions('lunch', lunchOptions, meals.lunch);
+                renderMealOptions('dinner', dinnerOptions, meals.dinner);
+            }
+
+            // Initial render
+            renderMeals();
+
+            // Handle Apply button
+            btnApply.addEventListener('click', function() {
+                const selectedBreakfast = document.querySelector('input[name="meal_breakfast"]:checked')?.value;
+                const selectedLunch = document.querySelector('input[name="meal_lunch"]:checked')?.value;
+                const selectedDinner = document.querySelector('input[name="meal_dinner"]:checked')?.value;
+
+                if (!scheduleData[currentDate]) {
+                    scheduleData[currentDate] = {};
+                }
+
+                if (selectedBreakfast) scheduleData[currentDate].breakfast = selectedBreakfast;
+                if (selectedLunch) scheduleData[currentDate].lunch = selectedLunch;
+                if (selectedDinner) scheduleData[currentDate].dinner = selectedDinner;
+
+                localStorage.setItem('savvEatSchedule', JSON.stringify(scheduleData));
+                
+                // Optional: Show a brief success indication
+                const originalText = btnApply.textContent;
+                btnApply.textContent = 'Saved!';
+                btnApply.style.backgroundColor = '#2E7D32';
+                btnApply.style.borderColor = '#2E7D32';
+                setTimeout(() => {
+                    btnApply.textContent = originalText;
+                    btnApply.style.backgroundColor = '';
+                    btnApply.style.borderColor = '';
+                }, 2000);
+            });
+
+            // Ensure the selected meals are saved to localStorage before navigating to schedule.html
+            const btnProceed = document.getElementById('btnProceed');
+            btnProceed.addEventListener('click', function(event) {
+                const selectedBreakfast = document.querySelector('input[name="meal_breakfast"]:checked')?.value;
+                const selectedLunch = document.querySelector('input[name="meal_lunch"]:checked')?.value;
+                const selectedDinner = document.querySelector('input[name="meal_dinner"]:checked')?.value;
+
+                if (!scheduleData[currentDate]) {
+                    scheduleData[currentDate] = {};
+                }
+
+                if (selectedBreakfast) scheduleData[currentDate].breakfast = selectedBreakfast;
+                if (selectedLunch) scheduleData[currentDate].lunch = selectedLunch;
+                if (selectedDinner) scheduleData[currentDate].dinner = selectedDinner;
+
+                localStorage.setItem('savvEatSchedule', JSON.stringify(scheduleData));
+            });
+        });
     </script>
 </body>
 </html>

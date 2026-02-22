@@ -1352,3 +1352,452 @@ footer {
     font-size: 0.9rem;
     font-weight: 600;
 }
+
+/* Role Selection Styles */
+.role-selection {
+    padding: 2rem 0;
+    background-color: #ffffff;
+    min-height: calc(100vh - 80px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.role-container {
+    max-width: 400px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.role-tabs {
+    display: flex;
+    background-color: #f5f5f5;
+    border-radius: 50px;
+    padding: 5px;
+    margin-bottom: 2rem;
+    width: 100%;
+}
+
+.role-tab {
+    flex: 1;
+    text-align: center;
+    padding: 10px 15px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    color: #555;
+    transition: all 0.3s ease;
+}
+
+.role-tab.active {
+    background-color: #fce8e6;
+    color: #e0402a;
+}
+
+.role-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.role-header h1 {
+    font-size: 2.2rem;
+    color: #3e3124;
+    margin-bottom: 0.5rem;
+}
+
+.role-header p {
+    color: #3e3124;
+    font-size: 1rem;
+}
+
+.role-content-box {
+    background-color: #f8f9fa;
+    border-radius: 20px;
+    padding: 1.5rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.role-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+}
+
+.role-card {
+    display: block;
+    cursor: pointer;
+    position: relative;
+}
+
+.role-radio {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.card-content {
+    padding: 1.5rem;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    background-color: #ebebeb;
+    color: #3e3124;
+}
+
+.role-radio:checked + .card-content {
+    background-color: #4CAF50;
+    color: white;
+    border-color: #4CAF50;
+    transform: scale(1.02);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.card-header h2 {
+    font-size: 1.8rem;
+    margin: 0;
+}
+
+.icon-circle {
+    width: 45px;
+    height: 45px;
+    background-color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+}
+
+.helper-card .icon-circle {
+    color: #c07c50; /* Apron color */
+}
+
+.employer-card .icon-circle {
+    color: #3e3124;
+}
+
+.card-content p {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin: 0;
+    color: #555;
+}
+
+.role-radio:checked + .card-content p {
+    color: rgba(255, 255, 255, 0.95);
+}
+
+.role-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
+
+.next-step-btn {
+    background-color: #4CAF50;
+    border-color: #4CAF50;
+    width: 80%;
+    font-size: 1.1rem;
+    padding: 12px;
+    border-radius: 50px;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    display: inline-block;
+}
+
+.next-step-btn:hover {
+    background-color: #4CAF50;
+    border-color: #4CAF50;
+}
+
+.sign-in-link {
+    color: #3e3124;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.sign-in-link:hover {
+    text-decoration: underline;
+}
+
+/* Weekly Meal Schedule Styles */
+.date-selector-container {
+    position: sticky;
+    top: 80px; /* Below header */
+    background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+    z-index: 100;
+    padding: 1rem 0;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.date-selector {
+    display: flex;
+    overflow-x: auto;
+    gap: 1rem;
+    padding-bottom: 0.5rem;
+    scrollbar-width: thin;
+}
+
+.date-selector::-webkit-scrollbar {
+    height: 6px;
+}
+
+.date-selector::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 10px;
+}
+
+.date-btn {
+    background: white;
+    border: 1px solid #ddd;
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-weight: 600;
+    color: #555;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.3s ease;
+}
+
+.date-btn:hover {
+    background: #f0f0f0;
+}
+
+.date-btn.active {
+    background: #e0402a;
+    color: white;
+    border-color: #e0402a;
+}
+
+.meal-schedule-content {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    margin-bottom: 3rem;
+}
+
+.meal-category h2 {
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 1.5rem;
+    border-left: 4px solid #e0402a;
+    padding-left: 10px;
+}
+
+.meal-options-container {
+    width: 100%;
+    overflow-x: auto;
+    padding-bottom: 1rem;
+    scrollbar-width: thin;
+}
+
+.meal-options-container::-webkit-scrollbar {
+    height: 12px;
+}
+
+.meal-options-container::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 10px;
+}
+
+.meal-options {
+    display: flex;
+    gap: 1.5rem;
+    min-width: max-content;
+}
+
+.meal-card {
+    display: block;
+    cursor: pointer;
+    position: relative;
+    width: 250px;
+}
+
+.meal-radio {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.meal-card-content {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+    border: 3px solid transparent;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.meal-card-content img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+}
+
+.meal-name {
+    padding: 1rem;
+    text-align: center;
+    font-weight: 600;
+    color: #333;
+    background: white;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.meal-radio:checked + .meal-card-content {
+    border-color: #e0402a;
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(224, 64, 42, 0.2);
+}
+
+.meal-radio:checked + .meal-card-content .meal-name {
+    background-color: #e0402a;
+    color: white;
+}
+
+.schedule-actions {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid #e0e0e0;
+}
+
+.schedule-actions .btn-primary,
+.schedule-actions .btn-secondary {
+    font-size: 1.1rem;
+    padding: 12px 30px;
+    border-radius: 50px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    display: inline-block;
+}
+
+.schedule-actions .btn-primary {
+    background-color: #e0402a;
+    border-color: #e0402a;
+    color: white;
+}
+
+.schedule-actions .btn-primary:hover {
+    background-color: #c83520;
+    border-color: #c83520;
+}
+
+.schedule-actions .btn-secondary {
+    background-color: transparent;
+    color: #e0402a;
+    border: 2px solid #e0402a;
+    margin-left: 0; /* Override default margin */
+}
+
+.schedule-actions .btn-secondary:hover {
+    background-color: #fce8e6;
+    transform: translateY(-3px);
+}
+
+/* Schedule Display Pills */
+.schedule-display-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 2rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.schedule-pill {
+    display: flex;
+    align-items: center;
+    border-radius: 50px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    background: white;
+    min-height: 60px;
+}
+
+.pill-label {
+    padding: 15px 30px;
+    font-weight: 600;
+    color: white;
+    min-width: 120px;
+    text-align: center;
+    font-size: 1.1rem;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pill-content {
+    padding: 15px 20px;
+    flex-grow: 1;
+    font-weight: 500;
+    color: #333;
+    font-size: 1.1rem;
+}
+
+.pill-content.empty-meal {
+    color: #999;
+    font-style: italic;
+}
+
+.pill-teal .pill-label {
+    background-color: #008080;
+}
+
+.pill-orange .pill-label {
+    background-color: #FF8C00;
+}
+
+.pill-brown .pill-label {
+    background-color: #8B4513;
+}
+
+@media (max-width: 576px) {
+    .schedule-pill {
+        flex-direction: column;
+        border-radius: 15px;
+    }
+    
+    .pill-label {
+        width: 100%;
+        padding: 10px;
+    }
+    
+    .pill-content {
+        text-align: center;
+        padding: 15px;
+    }
+}
