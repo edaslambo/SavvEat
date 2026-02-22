@@ -86,6 +86,7 @@
     </section>
 
     <script src="script.js"></script>
+    <!-- <script src="plans.js"></script> -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const dateSelector = document.getElementById('dateSelector');
@@ -190,15 +191,24 @@
                     if (savedSelection === option.id) input.checked = true;
 
                     label.addEventListener('mousedown', function(e) {
+                        e.preventDefault(); // Prevent default behavior
+
                         if (input.checked) {
-                            e.preventDefault();
-                            input.checked = false;
+                            input.checked = false; // Uncheck the input
                             if (scheduleData[currentDate] && scheduleData[currentDate][category] === option.id) {
-                                delete scheduleData[currentDate][category];
+                                delete scheduleData[currentDate][category]; // Remove from schedule data
                                 localStorage.setItem('savvEatSchedule', JSON.stringify(scheduleData));
                             }
-                            renderMeals();
+                        } else {
+                            input.checked = true; // Check the input
+                            if (!scheduleData[currentDate]) {
+                                scheduleData[currentDate] = {};
+                            }
+                            scheduleData[currentDate][category] = option.id; // Update schedule data
+                            localStorage.setItem('savvEatSchedule', JSON.stringify(scheduleData));
                         }
+
+                        renderMeals(); // Re-render the meals to reflect changes
                     });
 
                     const cardContent = document.createElement('div');
