@@ -32,26 +32,19 @@
         </div>
     </header>
 
-    <!-- Scheduled Meal Section -->
-    <section class="scheduled-meal">
+    <!-- Weekly Meals Section -->
+    <section class="weekly-meals">
         <div class="container">
             <div class="plans-header" style="display: flex; justify-content: space-between; align-items: center;">
                 <h1>Weekly Meal Schedule</h1>
-                <button id="editScheduleBtn" class="btn-secondary" style="margin: 0; padding: 8px 20px; font-size: 0.9rem;">
-                    <i class="fas fa-edit"></i> Edit
+                <button id="editScheduleBtn" class="btn-secondary" style="margin: 0; padding: 8px 20px; font-size: 0.9rem; display: flex; align-items: center; gap: 0.5rem;">
+                    <i class="fas fa-pencil-alt"></i> Edit
                 </button>
             </div>
 
-            <!-- Date Selector -->
-            <div class="date-selector-container">
-                <div class="date-selector" id="dateSelector">
-                    <!-- Dates will be injected here by JS -->
-                </div>
-            </div>
-
-            <!-- Meal Display Area -->
-            <div class="schedule-display-container" id="scheduleDisplay">
-                <!-- Meals will be injected here by JS -->
+            <!-- Weekly Meals Display Area -->
+            <div class="weekly-meals-container" id="weeklyMealsContainer">
+                <!-- Meals for the week will be injected here by JS -->
             </div>
         </div>
     </section>
@@ -59,11 +52,9 @@
     <script src="script.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const dateSelector = document.getElementById('dateSelector');
-            const scheduleDisplay = document.getElementById('scheduleDisplay');
+            const weeklyMealsContainer = document.getElementById('weeklyMealsContainer');
             const editScheduleBtn = document.getElementById('editScheduleBtn');
-            let currentDate = '';
-            
+
             // Load saved schedule data
             const savedData = localStorage.getItem('savvEatSchedule');
             const scheduleData = savedData ? JSON.parse(savedData) : {};
@@ -93,106 +84,69 @@
                 return meals[category].find(m => m.id === id) || null;
             }
 
-            function renderSchedule() {
-                // Always fetch fresh data from localStorage to handle back-button navigation
-                const savedData = localStorage.getItem('savvEatSchedule');
-                const currentScheduleData = savedData ? JSON.parse(savedData) : {};
-                
-                scheduleDisplay.innerHTML = '';
-                const dayData = currentScheduleData[currentDate] || {};
-                
-                const categories = [
-                    { key: 'breakfast', label: 'Breakfast', colorClass: 'pill-teal' },
-                    { key: 'lunch', label: 'Lunch', colorClass: 'pill-orange' },
-                    { key: 'dinner', label: 'Dinner', colorClass: 'pill-brown' }
-                ];
+            function renderWeeklyMeals() {
+                weeklyMealsContainer.innerHTML = '';
 
-                categories.forEach(cat => {
-                    const mealId = dayData[cat.key];
-                    const mealDetails = getMealDetails(cat.key, mealId);
-                    
-                    const pillContainer = document.createElement('div');
-                    pillContainer.className = `schedule-pill ${cat.colorClass}`;
-                    
-                    const labelDiv = document.createElement('div');
-                    labelDiv.className = 'pill-label';
-                    labelDiv.textContent = cat.label;
-                    
-                    const contentDiv = document.createElement('div');
-                    contentDiv.className = 'pill-content';
-                    
-                    if (mealDetails) {
-                        contentDiv.textContent = mealDetails.name;
-                    } else {
-                        contentDiv.textContent = '- No meal planned -';
-                        contentDiv.classList.add('empty-meal');
-                    }
-                    
-                    pillContainer.appendChild(labelDiv);
-                    pillContainer.appendChild(contentDiv);
-                    scheduleDisplay.appendChild(pillContainer);
-                });
-            }
+                const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+                const today = new Date();
 
-            // Generate dates for the next 7 days
-            const today = new Date();
-            const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-            
-            // Check for date in URL parameters
-            const urlParams = new URLSearchParams(window.location.search);
-            const urlDate = urlParams.get('date');
-            
-            for (let i = 0; i < 7; i++) {
-                const date = new Date(today);
-                date.setDate(today.getDate() + i);
-                
-                const dayName = days[date.getDay()];
-                const dayNum = String(date.getDate()).padStart(2, '0');
-                const monthNum = String(date.getMonth() + 1).padStart(2, '0');
-                const dateString = `${dayNum}/${monthNum} (${dayName})`;
-                const dateKey = `${date.getFullYear()}-${monthNum}-${dayNum}`;
+                for (let i = 0; i < 7; i++) {
+                    const date = new Date(today);
+                    date.setDate(today.getDate() + i);
 
-                const dateBtn = document.createElement('button');
-                
-                // Determine if this button should be active
-                let isActive = false;
-                if (urlDate) {
-                    isActive = (dateKey === urlDate);
-                } else {
-                    isActive = (i === 0);
-                }
-                
-                dateBtn.className = 'date-btn' + (isActive ? ' active' : '');
-                dateBtn.textContent = dateString;
-                dateBtn.dataset.date = dateKey;
-                
-                if (isActive) currentDate = dateKey;
+                    const dayName = days[date.getDay()];
+                    const dateKey = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
+                    const dayData = scheduleData[dateKey] || {};
 
-                dateBtn.addEventListener('click', function() {
-                    document.querySelectorAll('.date-btn').forEach(btn => btn.classList.remove('active'));
-                    this.classList.add('active');
-                    currentDate = this.dataset.date;
-                    renderSchedule();
-                });
+                    const dayContainer = document.createElement('div');
+                    dayContainer.className = 'day-container';
 
-                dateSelector.appendChild(dateBtn);
-            }
-            
-            // If urlDate was provided but not found in the next 7 days, default to today
-            if (!currentDate) {
-                const firstBtn = dateSelector.querySelector('.date-btn');
-                if (firstBtn) {
-                    firstBtn.classList.add('active');
-                    currentDate = firstBtn.dataset.date;
+                    const dayHeader = document.createElement('h3');
+                    dayHeader.textContent = `${dayName} (${dateKey})`;
+                    dayContainer.appendChild(dayHeader);
+
+                    const categories = [
+                        { key: 'breakfast', label: 'Breakfast', colorClass: 'pill-teal' },
+                        { key: 'lunch', label: 'Lunch', colorClass: 'pill-orange' },
+                        { key: 'dinner', label: 'Dinner', colorClass: 'pill-brown' }
+                    ];
+
+                    categories.forEach(cat => {
+                        const mealId = dayData[cat.key];
+                        const mealDetails = getMealDetails(cat.key, mealId);
+
+                        const pillContainer = document.createElement('div');
+                        pillContainer.className = `schedule-pill ${cat.colorClass}`;
+
+                        const labelDiv = document.createElement('div');
+                        labelDiv.className = 'pill-label';
+                        labelDiv.textContent = cat.label;
+
+                        const contentDiv = document.createElement('div');
+                        contentDiv.className = 'pill-content';
+
+                        if (mealDetails) {
+                            contentDiv.textContent = mealDetails.name;
+                        } else {
+                            contentDiv.textContent = '- No meal planned -';
+                            contentDiv.classList.add('empty-meal');
+                        }
+
+                        pillContainer.appendChild(labelDiv);
+                        pillContainer.appendChild(contentDiv);
+                        dayContainer.appendChild(pillContainer);
+                    });
+
+                    weeklyMealsContainer.appendChild(dayContainer);
                 }
             }
-            
+
             // Initial render
-            renderSchedule();
-            
+            renderWeeklyMeals();
+
             // Edit button logic
             editScheduleBtn.addEventListener('click', function() {
-                window.location.href = `plans.html?date=${currentDate}`;
+                window.location.href = 'plans.html';
             });
         });
     </script>

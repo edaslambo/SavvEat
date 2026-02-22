@@ -246,24 +246,6 @@
                     btnApply.style.borderColor = '';
                 }, 2000);
             });
-
-            // Ensure the selected meals are saved to localStorage before navigating to schedule.html
-            const btnProceed = document.getElementById('btnProceed');
-            btnProceed.addEventListener('click', function(event) {
-                const selectedBreakfast = document.querySelector('input[name="meal_breakfast"]:checked')?.value;
-                const selectedLunch = document.querySelector('input[name="meal_lunch"]:checked')?.value;
-                const selectedDinner = document.querySelector('input[name="meal_dinner"]:checked')?.value;
-
-                if (!scheduleData[currentDate]) {
-                    scheduleData[currentDate] = {};
-                }
-
-                if (selectedBreakfast) scheduleData[currentDate].breakfast = selectedBreakfast;
-                if (selectedLunch) scheduleData[currentDate].lunch = selectedLunch;
-                if (selectedDinner) scheduleData[currentDate].dinner = selectedDinner;
-
-                localStorage.setItem('savvEatSchedule', JSON.stringify(scheduleData));
-            });
         });
     </script>
 </body>
