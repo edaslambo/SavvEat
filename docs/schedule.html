@@ -37,8 +37,8 @@
         <div class="container">
             <div class="plans-header" style="display: flex; justify-content: space-between; align-items: center;">
                 <h1>Weekly Meal Schedule</h1>
-                <button id="editScheduleBtn" class="btn-secondary" style="margin: 0; padding: 8px 20px; font-size: 0.9rem; display: flex; align-items: center; gap: 0.5rem;">
-                    <i class="fas fa-pencil-alt"></i> Edit
+                <button id="editScheduleBtn" class="btn-secondary" style="background: none; border: none; cursor: pointer;">
+                    <img src="https://static.thenounproject.com/png/687044-200.png" alt="Edit" style="width: 24px; height: 24px;">
                 </button>
             </div>
 
@@ -59,25 +59,7 @@
             const savedData = localStorage.getItem('savvEatSchedule');
             const scheduleData = savedData ? JSON.parse(savedData) : {};
 
-            // Mock data for meals (needed to get names/images from IDs)
-            const meals = {
-                breakfast: [
-                    { id: 'b1', name: 'Oatmeal with Berries', image: 'https://images.unsplash.com/photo-1517673132405-a56a62b18caf?w=300&h=200&fit=crop' },
-                    { id: 'b2', name: 'Avocado Toast', image: 'https://images.unsplash.com/photo-1603048297172-c92544798d5e?w=300&h=200&fit=crop' },
-                    { id: 'b3', name: 'Pancakes', image: 'https://images.unsplash.com/photo-1528207776546-365bb710ee93?w=300&h=200&fit=crop' }
-                ],
-                lunch: [
-                    { id: 'l1', name: 'Grilled Chicken Salad', image: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=300&h=200&fit=crop' },
-                    { id: 'l2', name: 'Quinoa Bowl', image: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=300&h=200&fit=crop' },
-                    { id: 'l3', name: 'Turkey Wrap', image: 'https://images.unsplash.com/photo-1626804475297-41601ea0ba49?w=300&h=200&fit=crop' }
-                ],
-                dinner: [
-                    { id: 'd1', name: 'Fried rice noodle with shrimp', image: 'https://images.unsplash.com/photo-1552611052-33e04de081de?w=300&h=200&fit=crop' },
-                    { id: 'd2', name: 'Grilled Steak (with Asparagus)', image: 'https://images.unsplash.com/photo-1600891964092-4316c288032e?w=300&h=200&fit=crop' },
-                    { id: 'd3', name: 'Japanese Miso Soup with Tofu', image: 'https://images.unsplash.com/photo-1547592166-23ac45744acd?w=300&h=200&fit=crop' },
-                    { id: 'd4', name: 'Rigatoni Pasta with Tomato Sauce', image: 'https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?w=300&h=200&fit=crop' }
-                ]
-            };
+            let meals = { breakfast: [], lunch: [], dinner: [] };
 
             function getMealDetails(category, id) {
                 if (!id) return null;
@@ -126,7 +108,7 @@
                         contentDiv.className = 'pill-content';
 
                         if (mealDetails) {
-                            contentDiv.textContent = mealDetails.name;
+                            contentDiv.textContent = mealDetails.dishName;
                         } else {
                             contentDiv.textContent = '- No meal planned -';
                             contentDiv.classList.add('empty-meal');
@@ -141,8 +123,17 @@
                 }
             }
 
-            // Initial render
-            renderWeeklyMeals();
+            // Fetch meals.json and render
+            fetch('meals.json')
+                .then(response => response.json())
+                .then(data => {
+                    meals = data.menu;
+                    renderWeeklyMeals();
+                })
+                .catch(error => {
+                    console.error('Error loading meals:', error);
+                    renderWeeklyMeals();
+                });
 
             // Edit button logic
             editScheduleBtn.addEventListener('click', function() {

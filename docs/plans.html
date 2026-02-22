@@ -189,6 +189,18 @@
                     input.className = 'meal-radio';
                     if (savedSelection === option.id) input.checked = true;
 
+                    label.addEventListener('mousedown', function(e) {
+                        if (input.checked) {
+                            e.preventDefault();
+                            input.checked = false;
+                            if (scheduleData[currentDate] && scheduleData[currentDate][category] === option.id) {
+                                delete scheduleData[currentDate][category];
+                                localStorage.setItem('savvEatSchedule', JSON.stringify(scheduleData));
+                            }
+                            renderMeals();
+                        }
+                    });
+
                     const cardContent = document.createElement('div');
                     cardContent.className = 'meal-card-content';
 
