@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<head>    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SavvEat</title>
@@ -155,25 +155,38 @@
             // Set initial href for the proceed button
             document.getElementById('btnProceed').href = `schedule.html?date=${currentDate}`;
 
-            // Mock data for meals
-            const meals = {
-                breakfast: [
-                    { id: 'b1', name: 'Oatmeal with Berries', image: 'https://www.pcrm.org/sites/default/files/Oatmeal%20and%20Berries.jpg' },
-                    { id: 'b2', name: 'Avocado Toast', image: 'https://cleananddelicious.com/wp-content/uploads/2025/01/avocado-toast.jpg' },
-                    { id: 'b3', name: 'Pancakes', image: 'https://www.recipetineats.com/tachyon/2017/06/Pancakes-SQ.jpg' }
-                ],
-                lunch: [
-                    { id: 'l1', name: 'Grilled Chicken Salad', image: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=300&h=200&fit=crop' },
-                    { id: 'l2', name: 'Quinoa Bowl', image: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=300&h=200&fit=crop' },
-                    { id: 'l3', name: 'Turkey Wrap', image: 'https://www.accidentalhappybaker.com/wp-content/uploads/2023/09/TurkeySwissAppleWraps-11.jpg' }
-                ],
-                dinner: [
-                    { id: 'd1', name: 'Fried rice noodle with shrimp', image: 'https://images.unsplash.com/photo-1552611052-33e04de081de?w=300&h=200&fit=crop' },
-                    { id: 'd2', name: 'Grilled Steak (with Asparagus)', image: 'https://images.unsplash.com/photo-1600891964092-4316c288032e?w=300&h=200&fit=crop' },
-                    { id: 'd3', name: 'Japanese Miso Soup with Tofu', image: 'https://images.unsplash.com/photo-1547592166-23ac45744acd?w=300&h=200&fit=crop' },
-                    { id: 'd4', name: 'Rigatoni Pasta with Tomato Sauce', image: 'https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?w=300&h=200&fit=crop' }
-                ]
+            // Fetch meals from JSON file
+            let meals = {
+                breakfast: [],
+                lunch: [],
+                dinner: []
             };
+
+            // Try to load from local file first (for development/demo purposes)
+            // Note: In a real deployment, this would be a proper fetch() call.
+            // Since we can't easily set up a server here, we'll embed the data via a script tag backup or improved error handling.
+            
+            fetch('meals.json')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! Status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    meals = data;
+                    renderMeals();
+                })
+                .catch(error => {
+                    console.error('Error loading meals:', error);
+                    // Fallback for local file access (CORS restrictions)
+                    document.querySelector('.meal-schedule-content').innerHTML = 
+                        '<div style="text-align: center; padding: 20px; color: #721c24; background-color: #f8d7da; border-color: #f5c6cb; border-radius: 5px;">' +
+                        '<h3>Unable to load meal data</h3>' +
+                        '<p>If you are opening this file directly in your browser, security settings may prevent loading the external JSON file.</p>' +
+                        '<p>Please try running this via a local server (e.g., VS Code Live Server extension).</p>' +
+                        '</div>';
+                });
 
             function renderMealOptions(category, container, options) {
                 container.innerHTML = '';
@@ -195,11 +208,19 @@
 
                         if (input.checked) {
                             input.checked = false; // Uncheck the input
-                            if (scheduleData[currentDate] && scheduleData[currentDate][category] === option.id) {
+                            if (scheduleData[currentDate]) {
                                 delete scheduleData[currentDate][category]; // Remove from schedule data
                                 localStorage.setItem('savvEatSchedule', JSON.stringify(scheduleData));
                             }
                         } else {
+                            // Uncheck other options in the same category first (since it's a radio group, browser handles visual uncheck, but we need to update state)
+                            // Actually, since we preventDefault on mousedown, the browser's native radio behavior is suppressed.
+                            // So we need to manually uncheck other inputs if we want single selection per category.
+                            
+                            // Find all inputs in this container and uncheck them
+                            const allInputs = container.querySelectorAll('input[type="radio"]');
+                            allInputs.forEach(inp => inp.checked = false);
+
                             input.checked = true; // Check the input
                             if (!scheduleData[currentDate]) {
                                 scheduleData[currentDate] = {};
@@ -207,8 +228,11 @@
                             scheduleData[currentDate][category] = option.id; // Update schedule data
                             localStorage.setItem('savvEatSchedule', JSON.stringify(scheduleData));
                         }
-
-                        renderMeals(); // Re-render the meals to reflect changes
+                        
+                        // Small delay to allow UI update before any re-render logic if needed
+                        // But we don't need to re-render the whole list here, just update the UI state.
+                        // Re-rendering causes the list to flash or reset interactions.
+                        // Instead of calling renderMeals(), we can just rely on the manual DOM updates we just did.
                     });
 
                     const cardContent = document.createElement('div');
@@ -230,12 +254,63 @@
                 });
             }
 
+            function getSeededRandom(seedStr) {
+                // Create a numeric seed from the string
+                let seed = 0;
+                for (let i = 0; i < seedStr.length; i++) {
+                    seed = ((seed << 5) - seed) + seedStr.charCodeAt(i);
+                    seed |= 0; // Convert to 32bit integer
+                }
+                
+                return function() {
+                    const x = Math.sin(seed++) * 10000;
+                    return x - Math.floor(x);
+                };
+            }
+
+            function getDailyMeals(dateStr, allMeals) {
+                const dailySelection = {};
+                
+                ['breakfast', 'lunch', 'dinner'].forEach(category => {
+                    if (!allMeals[category]) {
+                         dailySelection[category] = [];
+                         return;
+                    }
+                    
+                    // Create a unique seed for each category so they are independent
+                    // This way adding a new breakfast item doesn't change lunch randomization
+                    const rng = getSeededRandom(dateStr + category);
+                    
+                    // Clone array to avoid modifying original
+                    const pool = [...allMeals[category]];
+                    
+                    // Fisher-Yates shuffle with seeded random
+                    for (let i = pool.length - 1; i > 0; i--) {
+                        const j = Math.floor(rng() * (i + 1));
+                        [pool[i], pool[j]] = [pool[j], pool[i]];
+                    }
+                    
+                    // Take first 3
+                    dailySelection[category] = pool.slice(0, 3);
+                });
+
+                return dailySelection;
+            }
+
             function renderMeals() {
                 // Always fetch fresh data from localStorage to handle back-button navigation
                 scheduleData = JSON.parse(localStorage.getItem('savvEatSchedule')) || {};
-                renderMealOptions('breakfast', breakfastOptions, meals.breakfast);
-                renderMealOptions('lunch', lunchOptions, meals.lunch);
-                renderMealOptions('dinner', dinnerOptions, meals.dinner);
+                
+                // Get deterministic random meals for this specific date
+                const dailyMeals = getDailyMeals(currentDate, meals);
+                
+                // Check if the currently saved selection is in the random list. if not, clear it or add it?
+                // For now, we only show the 3 random options. If a user previously selected something else (and it's not in the list),
+                // they won't see it selected. This is acceptable for a "simulated daily menu".
+                
+                renderMealOptions('breakfast', breakfastOptions, dailyMeals.breakfast);
+                renderMealOptions('lunch', lunchOptions, dailyMeals.lunch);
+                renderMealOptions('dinner', dinnerOptions, dailyMeals.dinner);
             }
 
             // Initial render

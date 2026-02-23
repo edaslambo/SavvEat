@@ -109,6 +109,13 @@
 
                         if (mealDetails) {
                             contentDiv.textContent = mealDetails.dishName;
+                            
+                            // Make the whole pill clickable if a meal is selected
+                            pillContainer.style.cursor = 'pointer';
+                            pillContainer.addEventListener('click', function() {
+                                // Redirect to details page with meal ID
+                                window.location.href = `details.html?id=${mealDetails.id}`;
+                            });
                         } else {
                             contentDiv.textContent = '- No meal planned -';
                             contentDiv.classList.add('empty-meal');

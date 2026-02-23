@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meal Details - SavvEat</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="all.min.css">
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <h2>Savv<span>Eat</span></h2>
+                </div>
+                 <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="schedule.html">Schedule</a></li>
+                 </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container" style="margin-top: 2rem;">
+        <h1 id="mealName">Loading...</h1>
+        <div id="mealDetails"></div>
+        <a href="schedule.html" class="btn-secondary">Back to Schedule</a>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            const mealId = params.get('id');
+            const mealNameEl = document.getElementById('mealName');
+            const mealDetailsEl = document.getElementById('mealDetails');
+
+            if (!mealId) {
+                mealNameEl.textContent = "Meal not found";
+                return;
+            }
+
+            fetch('meals.json')
+                .then(res => res.json())
+                .then(data => {
+                    let meal = null;
+                    // Search in all categories
+                    for (const cat in data.menu) {
+                        const found = data.menu[cat].find(m => m.id === mealId);
+                        if (found) {
+                            meal = found;
+                            break;
+                        }
+                    }
+
+                    if (meal) {
+                        mealNameEl.textContent = meal.dishName;
+                        // Basic rendering
+                        mealDetailsEl.innerHTML = `
+                            <p><strong>Cuisine:</strong> ${meal.cuisine}</p>
+                            <p>${meal.description}</p>
+                            <h3>Ingredients</h3>
+                            <ul>
+                                ${meal.ingredients.map(i => `<li>${i.quantity} ${i.item}</li>`).join('')}
+                            </ul>
+                            <h3>Steps</h3>
+                            <ol>
+                                ${meal.steps.map(s => `<li>${s}</li>`).join('')}
+                            </ol>
+                        `;
+                    } else {
+                        mealNameEl.textContent = "Meal details not found.";
+                    }
+                })
+                .catch(err => {
+                    console.error(err);
+                    mealNameEl.textContent = "Error loading meal data.";
+                });
+        });
+    </script>
+</body>
+</html>
